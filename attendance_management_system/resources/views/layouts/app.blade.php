@@ -22,6 +22,10 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- ALL CSS FILES -->
@@ -33,13 +37,22 @@
     <link href="{{ asset('css/style-mob.css') }}" rel="stylesheet" />
 </head>
 <body>
+    @if($message = Session::get('error'))
+        <script>
+            $(function() {
+                $('#modal10').modal({
+                    show: true
+                });
+            });
+        </script>
+    @endif
 <!-- MOBILE MENU -->
     <section>
         <div class="ed-mob-menu">
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo-mob">
-                        <a href="index-2.html"><img src="{{ asset('image/SAMS.png') }}" alt="" width="100px">
+                        <a href="#!"><img src="{{ asset('image/SAMS.png') }}" alt="" width="100px">
                         </a>
                     </div>
                 </div>
@@ -49,21 +62,24 @@
                         <div class="ed-mm-inn">
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             
-                            <h4>{{ Auth::user()->name }}</h4>
+                            <h4>{{-- Auth::user()->name --}}</h4>
+                            <h4>{{ isset(Auth::user()->user) ? Auth::user()->user : 'Profile' }}</h4>
                             <ul>
-                                <li><a href="{{ url('/') }}">Home</a></li>
-                                {{--<li><a href="#!" data-toggle="modal" data-target="#modal10">Sign In</a></li>
-                                <li><a href="#!" data-toggle="modal" data-target="#modal20">Sign Up</a></li>--}}
-                                <li><a href="#!" data-toggle="modal" data-target="#modal40">Password Change</a></li>
-                                <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                                </li>
+                                @guest
+                                    <li><a href="#!" data-toggle="modal" data-target="#modal10">{{ __('Sign In') }}</a></li>
+                                    @if(Route::has('register'))
+                                        <li><a href="#!" data-toggle="modal" data-target="#modal20">{{ __('Sign Up') }}</a></li>
+                                    @endif
+                                @else
+                                    <li><a href="{{ url('/') }}">{{ __('Home') }}</a></li>
+                                    <li><a href="#!" data-toggle="modal" data-target="#modal40">{{ __('Password Change') }}</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -73,33 +89,26 @@
     </section>
 
     <div id="app">
-
         <div class="top-logo shadow-sm" data-spy="affix" data-offset-top="250">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="index-2.html"><img src="{{ asset('image/SAMS.png') }}" alt=""
+                            <a href="#!"><img src="{{ asset('image/SAMS.png') }}" alt=""
                                     width="100px" />
                             </a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li>
-                                    <a href="{{ url('/') }}">Home</a>
-                                </li>
                                 @guest
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    </li>
+                                    <li><a href="#!" data-toggle="modal" data-target="#modal10">Sign In</a></li>
                                     @if(Route::has('register'))
-                                        <li class="nav-item">
-                                            <a class="nav-link"
-                                                href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li>
+                                        <li><a href="#!" data-toggle="modal" data-target="#modal20">Sign Up</a></li>
                                     @endif
                                 @else
+                                    <li>
+                                        <a href="{{ url('/') }}">{{ __('Home') }}</a>
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -112,13 +121,11 @@
                                                     <a class="dropdown-item" href="#!" data-toggle="modal" data-target="#modal40">Password Change</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
                                                         {{ __('Logout') }}
                                                     </a>
 
-                                                    <form id="logout-form" action="{{ route('logout') }}"
-                                                        method="POST" style="display: none;">
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                         @csrf
                                                     </form>
                                                 </li>
@@ -130,6 +137,14 @@
                                 
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
                     </div>
                 </div>
             </div>
@@ -180,6 +195,12 @@
                     </a>
                     <h4>Login</h4>
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
+                    @if($message = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <form class="s12"method="POST" action="{{ route('login') }}">
                     @csrf
                         <div>
@@ -272,6 +293,9 @@
                         <div>
                             <div class="input-field s12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+                                <p id="passwordHelpBlock" class="form-text text-muted" style="font-size:1.0em !important; color:#0000A0">
+                                    Your password must be more than 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.
+                                </p>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -402,6 +426,7 @@
     </section>
 
     <!--Import jQuery before materialize.js-->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/materialize.min.js') }}"></script>

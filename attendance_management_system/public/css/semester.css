@@ -20,12 +20,12 @@
 
 @media screen and (max-width: 576px) {
     .con {
-        left: 25%;
+        left: 5%;
     }
 
     .con .cardz .face {
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
         transition: 0.5s;
     }
 }
@@ -63,6 +63,16 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    transition: 0.7s;
+    color: #fff;
+}
+
+.con .cardz .icon .faa {
+    position: absolute;
+    top: 50%;
+    left: 25%;
     transform: translate(-50%, -50%);
     font-size: 100px;
     transition: 0.7s;

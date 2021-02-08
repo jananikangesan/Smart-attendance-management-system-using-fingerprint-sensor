@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\LevelController;
 //use App\Http\Middleware\IsLecturers;
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,12 @@ Route::group(['middleware' => ['auth', 'role']], function() {
 
   Route::get('/semester',[SemesterController::class,'index']);
   Route::post('/seme-update',[SemesterController::class,'update']);
+
+  Route::get('/level/update',[LevelController::class,'index']);
+  Route::get('/level-4/update',[LevelController::class,'updatefour']);
+  Route::post('/level-3/update',[LevelController::class,'updatethree']);
+  Route::post('/level-2/update',[LevelController::class,'updatetwo']);
+  Route::get('/level-1/update',[LevelController::class,'updateone']);
 
   Route::get('/admin/home',[DashboardController::class,'displycourse'])->name('admindashboard')->middleware('role');
 

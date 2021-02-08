@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\Student;
 use Illuminate\Http\Request;
 
 class SemesterController extends Controller
@@ -20,4 +21,5 @@ class SemesterController extends Controller
         DB::table('variables')->where('name', 'semester')->update(['value' => $seme]);
         return redirect()->back();
     }
+
 }
