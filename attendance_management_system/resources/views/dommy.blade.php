@@ -27,17 +27,12 @@
 </head>
 <body>
     <div class="container">
-       
-       
             <div class="col-sm-12" style="border: 5px solid; border-radius: 8px; padding:0px !important; margin-bottom:10px;">
                     <div class="row justify-content-center">
-                        <div class="col-sm-3 col-12 p-3 justify-content-center">
-                            <div class="brand-text d-none d-lg-inline-block"><img src="{{ public_path('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
-                            <div class="brand-text d-none d-sm-inline-block d-lg-none"><img src="{{ public_path('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
-                        </div>
+                        
                         <div class="col-sm-9 col-12">
                             <div class="row">
-                                <div class="col-sm-12 text-center p-2">
+                                <div class="col-sm-6 text-center p-2">
                                     <h1 class="h1font">Percentage Report of the Attendance</h1>
                                 </div>
                                
