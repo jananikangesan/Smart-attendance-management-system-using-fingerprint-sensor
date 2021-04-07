@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"> 
+   <link rel="stylesheet" href="{{public_path('vendor/bootstrap/css/bootstrap.min.css') }}"> 
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{public_path('vendor/font-awesome/css/font-awesome.min.css') }}"> --}}
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="{{ asset('css/fontastic.css') }}">
+    <link rel="stylesheet" href="{{public_path('css/fontastic.css') }}">
     {{-- <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,9 +21,9 @@
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Righteous&display=swap" rel="stylesheet"> --}}
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{public_path('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{public_path('css/custom.css') }}">
 </head>
 <body>
     <div class="container">
@@ -36,8 +36,8 @@
             <div class="col-sm-12" style="border: 5px solid; border-radius: 8px; padding:0px !important; margin-bottom:10px;">
                     <div class="row justify-content-center">
                         <div class="col-sm-3 col-12 p-3 justify-content-center">
-                            <div class="brand-text d-none d-lg-inline-block"><img src="{{ asset('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
-                            <div class="brand-text d-none d-sm-inline-block d-lg-none"><img src="{{ asset('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
+                            <div class="brand-text d-none d-lg-inline-block"><img src="{{public_path('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
+                            <div class="brand-text d-none d-sm-inline-block d-lg-none"><img src="{{public_path('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
                         </div>
                         <div class="col-sm-9 col-12">
                             <div class="row">
@@ -74,12 +74,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @php $i=1; @endphp --}}
+                                @php $i=1; @endphp
                                 @foreach($s3_st as $key => $s3st)
                                 <tr>
-                                    {{-- <td>{{ $i }}</td> --}}
-                                    {{-- @php $i=$i+1; @endphp --}}
-                                    <td>{{$s3_st ->firstitem()+$key}}</td>
+                                    <td>{{ $i }}</td>
+                                    @php $i=$i+1; @endphp
+                                    {{-- <td>{{$s3_st ->firstitem()+$key}}</td> --}}
                                     <td>{{ $s3st->st_regno }}</td>
                                     <td>{{ $s3st->st_name }}</td>
 
@@ -123,7 +123,7 @@
                         </table>
                     </div>
             </div>
-            {{ $s3_st->appends(request()->input())->links() }}  
+            {{-- {{ $s3_st->appends(request()->input())->links() }}   --}}
         @endif
     </div>
 </body>
