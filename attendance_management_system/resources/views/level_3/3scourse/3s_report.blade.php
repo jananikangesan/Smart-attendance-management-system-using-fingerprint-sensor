@@ -1,5 +1,5 @@
 @extends('level_3.3scourse.3scourses')
-@section('pagetitle', 'Attandance/level3/3S/final-report')
+@section('pagetitle', 'Attandance/level3/3S/semester-final-report')
 @section('levelcontent')
 
 <div class="col-sm-12" style="border: 5px solid; border-radius: 8px; padding:0px !important; margin-bottom:10px;">

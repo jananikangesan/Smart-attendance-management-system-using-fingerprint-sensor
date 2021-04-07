@@ -122,6 +122,9 @@ class S3courseController extends Controller
         $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->paginate(10);
         $attendances = Attendance_3S_Student::with('student')->get();
         $s3_hourssum = Attendance_3S_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+        //$from = Attendance_3S_Student::where('date', Attendance_3S_Student::min('date'))->orderBy('date','DESC')
+        //->select('date', DB::raw('count(`date`) as occurences'))->groupBy('date')->having('occurences', '>', 1)->get();
+        //$to = Attendance_3S_Student::where('date', Attendance_3S_Student::max('date'))->orderBy('date','DESC')->select('date')->get();
        // $s3_coursecount = Attendance_3S_Student::groupBy('course_code')->select('course_code',DB::raw('count(course_code) as count'))->get();
        
        return view('level_3.3scourse.3s_report', compact('course','semester','s3_st','attendances','s3_hourssum')); 
