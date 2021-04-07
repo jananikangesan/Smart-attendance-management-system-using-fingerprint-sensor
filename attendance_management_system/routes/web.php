@@ -120,12 +120,12 @@ Route::group(['middleware' => ['auth', 'role']], function() {
 
   Route::any('/3m/finalreport', 'M3courseController@finalreport3m');
   Route::any('/3m/weeklyreport', 'M3courseController@weeklyreport3m');
-
-
   /*pdfview */
   Route::any('/report3s', 'S3courseController@pdfmaker');
+
   Route::any('/report3g', 'G3courseController@pdfmaker');
   Route::any('/report3m', 'M3courseController@pdfmaker');
+
   
 //   Route::get('/level3s', function () {
 //      return view('level_3.3scourse.3scourses');
@@ -172,10 +172,6 @@ Route::group([
     Route::delete('/attendance_3_g__student/{attendance3GStudent}','Attendance3GStudentsController@destroy')
          ->name('attendance_3_g__students.attendance_3_g__student.destroy')->where('id', '[0-9]+');
 });
-
-
-
-
 
 Route::group([
     'prefix' => 'attendance_3_m__students',
