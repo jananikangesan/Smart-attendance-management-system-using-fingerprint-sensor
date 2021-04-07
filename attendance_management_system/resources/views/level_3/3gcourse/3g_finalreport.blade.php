@@ -63,7 +63,17 @@
                                 </div>
                                     <button class="btn btn-info" type="submit">Final Report</button>
                             </form>
+
+                            <form action="{{ url('/report3g') }}" method="POST" target="blank">
+                                @csrf
+                                    <div class="form-row">
+                                        <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
+                                    </div>
+                           
+                                    <button class="btn btn-primary" type="submit" ><i class="fa fa-download" aria-hidden="true"></i></button>
+                            </form>
                         </div>
+                        
                     </div>
                     <hr />
                 </section>

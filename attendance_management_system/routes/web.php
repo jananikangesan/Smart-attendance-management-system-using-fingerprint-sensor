@@ -99,8 +99,8 @@ Route::group(['middleware' => ['auth', 'role']], function() {
   Route::any('/attendance', 'S3courseController@attendance')->name('attendance');
   Route::any('/weeklyreport', 'S3courseController@weeklyreport')->name('weeklyreport');
   Route::any('/finalreport', 'S3courseController@finalreport')->name('finalreport');
-  Route::get('/finalreport/downloadpdf', 'S3courseController@finalreport_download')->name('finalreport-downloadpdf');
-  Route::get('/downloadpdf', 'S3courseController@downloadPDF');
+ // Route::get('/finalreport/downloadpdf', 'S3courseController@finalreport_download')->name('finalreport-downloadpdf');
+ // Route::get('/downloadpdf', 'S3courseController@downloadPDF');
 
   Route::any('/3s/finalreport', 'S3courseController@finalreport3s');
   Route::any('/3s/weeklyreport', 'S3courseController@weeklyreport3s');
@@ -124,7 +124,8 @@ Route::group(['middleware' => ['auth', 'role']], function() {
 
   /*pdfview */
   Route::any('/report3s', 'S3courseController@pdfmaker');
-
+  Route::any('/report3g', 'G3courseController@pdfmaker');
+  Route::any('/report3m', 'M3courseController@pdfmaker');
   
 //   Route::get('/level3s', function () {
 //      return view('level_3.3scourse.3scourses');

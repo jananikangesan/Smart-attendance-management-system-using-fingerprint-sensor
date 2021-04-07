@@ -19,7 +19,7 @@
 </head> 
 <body>
     <div class="container">
-        @if($s3_coursecount == 0)
+        @if($g3_coursecount == 0)
         <div class="panel-body text-center">
             <hr />
             <h4>{{$course}} Attendance is not available.</h4>
@@ -43,16 +43,16 @@
                                     <p class="t-left"><b>Course Code: </b>{{ $course }}</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Course Name: </b>@foreach($s3_cname as $s3cname) {{ $s3cname->course_name }} @endforeach</p>
+                                    <p class="t-left"><b>Course Name: </b>@foreach($g3_cname as $g3cname) {{ $g3cname->course_name }} @endforeach</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Level: </b>3S</p>
+                                    <p class="t-left"><b>Level: </b>3G</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="t-left"><b>Lecturer Name: </b>@foreach($lecturer_name as $lname) {{$lname->lect_title. $lname -> lect_name}} @endforeach</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Number of Lecture Hours: </b>{{ $s3_hourssum ." hours"}}  </p>
+                                    <p class="t-left"><b>Number of Lecture Hours: </b>{{ $g3_hourssum ." hours"}}  </p>
                                 </div>
                             </div>
                         </div>
@@ -70,13 +70,13 @@
                             </thead>
                             <tbody style="color:rgb(12, 11, 11);" >
                                 @php $i=1; @endphp
-                                @foreach($s3_st as $key => $s3st)
+                                @foreach($g3_st as $key => $g3st)
                                 <tr>
                                     <td>{{ $i }}</td>
                                     @php $i=$i+1; @endphp
                                     {{-- <td>{{$s3_st ->firstitem()+$key}}</td> --}}
-                                    <td>{{ $s3st->st_regno }}</td>
-                                    <td>{{ $s3st->st_name }}</td>
+                                    <td>{{ $g3st->st_regno }}</td>
+                                    <td>{{ $g3st->st_name }}</td>
 
                                     @php  
                                         $st_count=0; 
@@ -86,7 +86,7 @@
                                     @foreach($attendances as $attendance)
                                         @if (is_array($attendance->attendance_mark) || is_object($attendance->attendance_mark))
                                     
-                                            @if(in_array( $s3st->st_regno,$attendance->attendance_mark))  
+                                            @if(in_array( $g3st->st_regno,$attendance->attendance_mark))  
                                                 @php 
                                                     $st_count=$st_count+1; 
                                                     $st_hours=$st_hours+ $attendance->hours;
@@ -101,9 +101,9 @@
                                     </th>
                                     <th>
                                         @php 
-                                            if($s3_hourssum !=0)
+                                            if($g3_hourssum !=0)
                                             {
-                                                $percentage= $st_hours /$s3_hourssum  ;
+                                                $percentage= $st_hours /$g3_hourssum  ;
                                                 echo round( $percentage*100,2);
                                             }
                                             else{

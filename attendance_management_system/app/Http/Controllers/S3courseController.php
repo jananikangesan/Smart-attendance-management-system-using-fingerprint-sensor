@@ -123,9 +123,11 @@ class S3courseController extends Controller
     //     return $pdf->stream();
     // }
    /*pdfview try*/
-    public function pdfmaker(){
+    public function pdfmaker(Request $request){
+        $course = $request->input('course');
         $pdf= App::make('dompdf.wrapper');
-        $course ='CSC304S3';
+        //$course ='CSC304S3';
+        //$course = $request->input('course');
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
         $s3_courses = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
