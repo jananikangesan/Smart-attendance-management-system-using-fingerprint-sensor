@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="table-responsive" style="display:flex !important;">
-                        <table class="table table-striped table-hover " border="1px">
+                        <table class="table table-striped table-hover " >
                             <thead class="thead-dark" style="background: #053469; color:#fff;">
                                 <tr>
                                     <th>NO</th>
@@ -68,7 +68,7 @@
                                     <th>Attendance Percentage(%)</th>
                                 </tr>
                             </thead>
-                            <tbody style="color:rgb(12, 11, 11);" >
+                            <tbody style="background: #e3e6da; color:rgb(14, 13, 13);" >
                                 @php $i=1; @endphp
                                 @foreach($g3_st as $key => $g3st)
                                 <tr>

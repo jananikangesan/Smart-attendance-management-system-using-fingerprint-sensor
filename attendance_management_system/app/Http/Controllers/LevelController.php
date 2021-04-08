@@ -15,9 +15,9 @@ class LevelController extends Controller
 
     public function updatefour()
     {
-        //Student::where('st_level', '4S')->update(['st_level' => 'PO-4S']);
-        //Student::where('st_level', '4M')->update(['st_level' => 'PO-4G']);
-        //Student::where('st_level', 'PO')->update(['st_level' => '4M']);
+        Student::where('st_level', '4S')->update(['st_level' => 'PO-4S']);
+        Student::where('st_level', '4M')->update(['st_level' => 'PO-4G']);
+        Student::where('st_level', 'PO')->update(['st_level' => '4M']);
         return redirect()->back();
     }
 
@@ -27,13 +27,13 @@ class LevelController extends Controller
 
         foreach ($ids as $id)
         {
-            //Student::where('st_id', '=', $id)->where('st_level', '3S')->update(['st_level' => '4S']);
+            Student::where('st_id', '=', $id)->where('st_level', '3S')->update(['st_level' => '4S']);
         }
 
-        //Student::where('st_level', '3M')->update(['st_level' => '4M']);
-        //Student::where('st_level', '3G')->update(['st_level' => 'PO-3G']);
-        //Student::where('st_level', '3S')->update(['st_level' => 'PO-3S']);
-        //dd($final_year);
+        Student::where('st_level', '3M')->update(['st_level' => '4M']);
+        Student::where('st_level', '3G')->update(['st_level' => 'PO-3G']);
+        Student::where('st_level', '3S')->update(['st_level' => 'PO-3S']);
+       // dd($final_year);
         return redirect()->back();
     }
 
@@ -43,18 +43,18 @@ class LevelController extends Controller
 
         foreach ($ids as $id)
         {
-            //Student::where('st_id', '=', $id)->where('st_level', '2G')->update(['st_level' => '3M']);
+            Student::where('st_id', '=', $id)->where('st_level', '2G')->update(['st_level' => '3M']);
         }
 
-        //Student::where('st_level', '2S')->update(['st_level' => '3S']);
-        //Student::where('st_level', '2G')->update(['st_level' => '3G']);
+        Student::where('st_level', '2S')->update(['st_level' => '3S']);
+        Student::where('st_level', '2G')->update(['st_level' => '3G']);
         return redirect()->back();
     }
 
     public function updateone()
     {
-        //Student::where('st_level', '1S')->update(['st_level' => '2S']);
-        //Student::where('st_level', '1G')->update(['st_level' => '2G']);
+        Student::where('st_level', '1S')->update(['st_level' => '2S']);
+        Student::where('st_level', '1G')->update(['st_level' => '2G']);
         return redirect()->back();
     }
 

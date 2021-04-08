@@ -128,6 +128,22 @@ class G3courseController extends Controller
         
      }
 
+     public function pdfmaker3g(){
+        
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $course = Course::where('course_level', '3G')->where('semester','=', $semester )->select('course_code')->get();
+        $g3_st=Student::whereIn('st_level', ['3G','3M'])->orderBy('st_regno','asc')->paginate(10);
+        $attendances = Attendance_3G_Student::with('student')->get();
+        $g3_hourssum = Attendance_3G_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+       
+        $pdf -> loadview('level_3.3gcourse.3g_reportpdf', compact('course','semester','g3_st','attendances','g3_hourssum'));
+     
+       return $pdf->stream();
+       
+     }
+
 
 }
 

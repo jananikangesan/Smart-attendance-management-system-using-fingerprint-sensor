@@ -122,9 +122,12 @@ Route::group(['middleware' => ['auth', 'role']], function() {
   Route::any('/3m/weeklyreport', 'M3courseController@weeklyreport3m');
   /*pdfview */
   Route::any('/report3s', 'S3courseController@pdfmaker');
-
   Route::any('/report3g', 'G3courseController@pdfmaker');
   Route::any('/report3m', 'M3courseController@pdfmaker');
+
+  Route::any('/finalpdf3s', 'S3courseController@pdfmaker3s');
+  Route::any('/finalpdf3g', 'G3courseController@pdfmaker3g');
+  Route::any('/finalpdf3m', 'M3courseController@pdfmaker3m');
 
   
 //   Route::get('/level3s', function () {

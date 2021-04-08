@@ -131,7 +131,21 @@ class M3courseController extends Controller
        return $pdf->stream();
         
      }
-    
+     public function pdfmaker3m(){
+        
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+        $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->get();
+        $attendances = Attendance_3M_Student::with('student')->get();
+        $m3_hourssum = Attendance_3M_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+       
+        $pdf -> loadview('level_3.3mcourse.3m_reportpdf', compact('course','semester','m3_st','attendances','m3_hourssum'));
+     
+       return $pdf->stream();
+       
+     }
 
 
 

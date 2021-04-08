@@ -144,6 +144,25 @@ class S3courseController extends Controller
        return $pdf->stream();
         //return view('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
      }
+
+
+
+
+     public function pdfmaker3s(){
+        
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
+        $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->get();
+        $attendances = Attendance_3S_Student::with('student')->get();
+        $s3_hourssum = Attendance_3S_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+       
+        $pdf -> loadview('level_3.3scourse.3s_reportpdf', compact('course','semester','s3_st','attendances','s3_hourssum'));
+     
+       return $pdf->stream();
+       
+     }
     
       /* 3s final semester report */
  

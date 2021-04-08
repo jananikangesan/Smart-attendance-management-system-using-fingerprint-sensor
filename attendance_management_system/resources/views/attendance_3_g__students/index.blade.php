@@ -54,6 +54,11 @@
                     </div>
                     <div class="col-6 d-flex justify-content-center">
                         <a class="btn" href="{{url('/3g/finalreport')}}" role="button" style="background:#8601af !important; color:#fff;">3G final report</a>
+                        <form action="{{ url('/finalpdf3g') }}" method="POST" target="blank">
+                            @csrf
+                            
+                        <button class="btn btn-primary" type="submit" ><i class="fa fa-download" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </div>
                 {{--<hr /> --}}
