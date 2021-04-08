@@ -7,6 +7,8 @@ use App\Student;
 use App\Lecturer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use PDF;
+use App;
 
 class M3courseController extends Controller
 {
@@ -107,6 +109,43 @@ class M3courseController extends Controller
         return view('level_3.3mcourse.3m_report', compact('course','semester','m3_st','attendances','m3_hourssum','to','from')); 
 
     }
+
+
+    public function pdfmaker(Request $request){
+        $course = $request->input('course');
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->get();
+        $m3_courses = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+        $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->get();
+        $count3m = Student::where('st_level', '3M')->count();
+        $m3_cname = Course::where('course_level', '3M')->where('course_code', $course)->select('course_name','semester')->get();
+        $m3_coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
+        $m3_hourssum = Attendance_3M_Student::where('course_code',$course )->sum('hours');
+        $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
+        
+       
+        $pdf -> loadview('level_3.3mcourse.3m_finalreport_pdfdownload', compact('course', 'attendances', 'm3_courses','m3_st','count3m','m3_coursecount','m3_cname','m3_hourssum','lecturer_name'));
+  
+       return $pdf->stream();
+        
+     }
+     public function pdfmaker3m(){
+        
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+        $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->get();
+        $attendances = Attendance_3M_Student::with('student')->get();
+        $m3_hourssum = Attendance_3M_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+       
+        $pdf -> loadview('level_3.3mcourse.3m_reportpdf', compact('course','semester','m3_st','attendances','m3_hourssum'));
+     
+       return $pdf->stream();
+       
+     }
 
 
 

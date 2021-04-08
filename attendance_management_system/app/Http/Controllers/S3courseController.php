@@ -123,9 +123,11 @@ class S3courseController extends Controller
     //     return $pdf->stream();
     // }
    /*pdfview try*/
-    public function pdfmaker(){
+    public function pdfmaker(Request $request){
+        $course = $request->input('course');
         $pdf= App::make('dompdf.wrapper');
-        $course ='CSC304S3';
+        //$course ='CSC304S3';
+        //$course = $request->input('course');
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
         $s3_courses = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
@@ -141,6 +143,25 @@ class S3courseController extends Controller
        // return $pdf ->download('report.pdf');
        return $pdf->stream();
         //return view('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
+     }
+
+
+
+
+     public function pdfmaker3s(){
+        
+        $pdf= App::make('dompdf.wrapper');
+        
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
+        $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->get();
+        $attendances = Attendance_3S_Student::with('student')->get();
+        $s3_hourssum = Attendance_3S_Student::groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+       
+        $pdf -> loadview('level_3.3scourse.3s_reportpdf', compact('course','semester','s3_st','attendances','s3_hourssum'));
+     
+       return $pdf->stream();
+       
      }
     
       /* 3s final semester report */

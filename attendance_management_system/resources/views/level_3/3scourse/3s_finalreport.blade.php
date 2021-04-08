@@ -61,9 +61,23 @@
                                 <div class="form-row">
                                     <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
                                 </div>
-                                    <button class="btn btn-info" type="submit">Final Report</button>
+                                    <button class="btn btn-info" type="submit" target="blank">Final Report</button>
                             </form>
+                            <form action="{{ url('/report3s') }}" method="POST" target="blank">
+                                @csrf
+                                    <div class="form-row">
+                                        <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
+                                    </div>
+                           
+                                    <button class="btn btn-primary" type="submit" ><i class="fa fa-download" aria-hidden="true"></i></button>
+                            </form>
+
+
+                            {{-- <a href="{{ url('/report3s') }}" class="btn btn-primary" target="blank">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                            </a> --}}
                         </div>
+
                     </div>
                     <hr />
                 </section>

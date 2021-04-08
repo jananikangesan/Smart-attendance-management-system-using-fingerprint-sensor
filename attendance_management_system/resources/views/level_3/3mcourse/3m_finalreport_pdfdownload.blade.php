@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="{{public_path('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{public_path('css/custom.css') }}">
+
 </head> 
 <body>
     <div class="container">
-        @if($s3_coursecount == 0)
+        @if($m3_coursecount == 0)
         <div class="panel-body text-center">
             <hr />
             <h4>{{$course}} Attendance is not available.</h4>
@@ -43,16 +44,16 @@
                                     <p class="t-left"><b>Course Code: </b>{{ $course }}</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Course Name: </b>@foreach($s3_cname as $s3cname) {{ $s3cname->course_name }} @endforeach</p>
+                                    <p class="t-left"><b>Course Name: </b>@foreach($m3_cname as $m3cname) {{ $m3cname->course_name }} @endforeach</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Level: </b>3S</p>
+                                    <p class="t-left"><b>Level: </b>3M</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="t-left"><b>Lecturer Name: </b>@foreach($lecturer_name as $lname) {{$lname->lect_title. $lname -> lect_name}} @endforeach</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="t-left"><b>Number of Lecture Hours: </b>{{ $s3_hourssum ." hours"}}  </p>
+                                    <p class="t-left"><b>Number of Lecture Hours: </b>{{ $m3_hourssum ." hours"}}  </p>
                                 </div>
                             </div>
                         </div>
@@ -70,13 +71,13 @@
                             </thead>
                             <tbody style="background: #e3e6da; color:rgb(14, 13, 13);" >
                                 @php $i=1; @endphp
-                                @foreach($s3_st as $key => $s3st)
+                                @foreach($m3_st as $key => $m3st)
                                 <tr>
                                     <td>{{ $i }}</td>
                                     @php $i=$i+1; @endphp
                                     {{-- <td>{{$s3_st ->firstitem()+$key}}</td> --}}
-                                    <td>{{ $s3st->st_regno }}</td>
-                                    <td>{{ $s3st->st_name }}</td>
+                                    <td>{{ $m3st->st_regno }}</td>
+                                    <td>{{ $m3st->st_name }}</td>
 
                                     @php  
                                         $st_count=0; 
@@ -86,7 +87,7 @@
                                     @foreach($attendances as $attendance)
                                         @if (is_array($attendance->attendance_mark) || is_object($attendance->attendance_mark))
                                     
-                                            @if(in_array( $s3st->st_regno,$attendance->attendance_mark))  
+                                            @if(in_array( $m3st->st_regno,$attendance->attendance_mark))  
                                                 @php 
                                                     $st_count=$st_count+1; 
                                                     $st_hours=$st_hours+ $attendance->hours;
@@ -101,9 +102,9 @@
                                     </th>
                                     <th>
                                         @php 
-                                            if($s3_hourssum !=0)
+                                            if($m3_hourssum !=0)
                                             {
-                                                $percentage= $st_hours /$s3_hourssum  ;
+                                                $percentage= $st_hours /$m3_hourssum  ;
                                                 echo round( $percentage*100,2);
                                             }
                                             else{
