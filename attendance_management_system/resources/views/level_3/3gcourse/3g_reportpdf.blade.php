@@ -16,45 +16,65 @@
     <link rel="stylesheet" href="{{public_path('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{public_path('css/custom.css') }}">
+    <style>
+		/* Pattern styles */
+		.left-half {
+		  float: left;
+		  width: 25%;
+          margin: 1%;
+		}
+		.right-half {
+		  float: left;
+		  width: 70%;
+          text-align: center;
+          margin: 1%;
+		}
+        .ta{
+          border: 2px solid black;
+          text-align: center;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+    </style>
 </head> 
 <body>
     
-    <div class="col-sm-12" style="border: 5px solid; border-radius: 8px; padding:0px !important; margin-bottom:10px;">
-        <div class="row justify-content-center">
-           
-            <div class="col-sm-3 col-12 p-3 justify-content-center">
-                <div class="brand-text d-none d-lg-inline-block"><img src="{{public_path('image/DCS-logo.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div>
-                {{-- <div class="brand-text d-none d-sm-inline-block d-lg-none"><img src="{{public_path('image/SAMS.png') }}" width="200px" alt="..." class="img-fluid d-inline-block align-top"></div> --}}
+    <div class="col-sm-12" style="border: 2px solid; border-radius: 8px; padding:0px !important; margin-bottom:10px;">
+        <div>
+            <div class="left-half">
+                <img src="{{public_path('image/DCS-logo.png') }}" width="100%" alt="...">
             </div>
-           
-        
-            <div class="col-sm-9 col-12">
-                <div class="row">
-                    <div class="col-sm-12 text-center p-2">
-                        <h1 class="h1font">Percentage Report of the Attendance</h1>
-                    </div>
-                    <div class="col-sm-6 text-center">
-                        <p class="text-center"><b>Level: </b>3G</p>
-                    </div>
-                    <div class="col-sm-6 text-center">
-                        <p class="text-center"><b>Semester: </b>{{ $semester }}</p>
-                    </div>
-                    
-                </div>
+            <div class="right-half">
+                <h1 class="h1font" style="color:#000080;">Percentage Report of the Attendance</h1>
             </div>
         </div>
 
-
+        <div>
+            <table style="width:100%; margin-top: 8%;">
+                <tr>
+                    <td><p class="t-left" style="color:#000080;"><b>Level: </b>3G</td>
+                    <td><p class="t-left" style="color:#000080;"><b>Semester: </b>{{ $semester }}</td>
+                </tr>
+                <tr>
+                    <td><p class="t-left" style="color:#000080;"><b>Period: </b></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
         <div class="table-responsive" style="display:flex !important;">
-            <table class="table table-striped table-hover table-bordered"  >
+            <table class="table table-striped table-hover table-bordered ta"  >
                 <thead class="thead-dark" style="background: #053469; color:#fff;">
-                    <tr>
-                        <th colspan="3">Course Code</th>
+                    <tr class="ta">
+                        <th colspan="3" class="ta">Course Code</th>
                        
                         @foreach($course as $c)
                          @foreach($g3_hourssum as $hourssum)  
                            @if($hourssum->course_code ==$c->course_code )
-                             <th colspan="2">
+                             <th colspan="2" class="ta">
                                @php 
                                  if($hourssum ->sum !=0)
                                  {
@@ -69,19 +89,19 @@
                     </tr>
     
                     <tr>
-                        <th colspan="3">No.of Lecture Hours</th>
+                        <th colspan="3" class="ta">No.of Lecture Hours</th>
                        
                         @foreach($course as $c)
                          @foreach($g3_hourssum as $hourssum)  
                            @if($hourssum->course_code ==$c->course_code )
-                             <th colspan="2">
+                             <th colspan="2" class="ta">
                                @php 
                                  if($hourssum ->sum !=0)
                                  {
                                   echo $hourssum ->sum ;
                                  }
                                 @endphp  
-                             </th>
+                             </th class="ta">
                             @endif  
                           @endforeach      
     
@@ -89,14 +109,14 @@
                     </tr>
                     
                     <tr>
-                        <th>No</th>
-                        <th>Registration No</th>
-                        <th>Full Name</th>
+                        <th class="ta">No</th>
+                        <th class="ta">Registration No</th>
+                        <th class="ta">Full Name</th>
                         @foreach($course as $c)
                          @foreach($g3_hourssum as $hourssum)  
                            @if($hourssum->course_code ==$c->course_code )
-                             <th>Attn</th>
-                             <th>%</th>
+                             <th class="ta">Attn</th>
+                             <th class="ta">%</th>
                             @endif  
                           @endforeach      
     
@@ -108,11 +128,11 @@
                     @php $i=1; @endphp
                 @foreach($g3_st as $key => $g3st)
                     <tr>
-                        <td>{{ $i }}</td>
+                        <td class="ta">{{ $i }}</td>
                         @php $i=$i+1; @endphp
                         {{-- <td>{{$g3_st ->firstitem()+$key}}</td>  --}}
-                        <td>{{ $g3st->st_regno }}</td>
-                        <td>{{ $g3st->st_name }}</td>
+                        <td class="ta">{{ $g3st->st_regno }}</td>
+                        <td class="ta">{{ $g3st->st_name }}</td>
     
                             @foreach($course as $c)     
                                 @php  
@@ -133,7 +153,7 @@
     
                                 @foreach($g3_hourssum as $hourssum)  
                                     @if($hourssum->course_code ==$c->course_code )
-                                        <td>
+                                        <td class="ta">
                                             @php 
                                                 echo $st_hours;  
                                             @endphp 
@@ -143,7 +163,7 @@
     
                                 @foreach($g3_hourssum as $hourssum)  
                                     @if($hourssum->course_code ==$c->course_code )
-                                        <td>
+                                        <td class="ta">
                                             @php 
                                                 if($hourssum ->sum !=0)
                                                 {

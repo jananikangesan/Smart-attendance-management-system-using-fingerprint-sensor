@@ -128,7 +128,7 @@ class M3courseController extends Controller
        
         $pdf -> loadview('level_3.3mcourse.3m_finalreport_pdfdownload', compact('course', 'attendances', 'm3_courses','m3_st','count3m','m3_coursecount','m3_cname','m3_hourssum','lecturer_name'));
   
-       return $pdf->stream();
+        return $pdf->stream();
         
      }
      public function pdfmaker3m(){
