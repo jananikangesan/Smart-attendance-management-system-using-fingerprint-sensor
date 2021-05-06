@@ -39,7 +39,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-row justify-content-end p-3">
-                                                <button class="btn btn-info" type="submit">Get Report</button>
+                                                {{--<button class="btn btn-info" type="submit">Get Report</button>--}}
+                                                <button class="btn btn-info" type="submit" name="action" value="get_report">Get Report</button>
+                                                <button class="btn btn-info" type="submit" name="action" value="download_pdf">Download</button>
                                             </div>
 
                                         </form>

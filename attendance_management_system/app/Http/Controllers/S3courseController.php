@@ -12,6 +12,7 @@ use App;
 
 class S3courseController extends Controller
 {
+    // function for subject of perticular semester layout
     public function index()
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -30,8 +31,7 @@ class S3courseController extends Controller
        
     // }
 
-   // function for printing attendance like school register
-
+   /*function for printing attendance like school register*/
     public function attendance(Request $request)
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -47,6 +47,7 @@ class S3courseController extends Controller
         return view('level_3.3scourse.3s', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
     }
 
+    /* function for preparing weekly_persentage_report of perticular 3s subject*/
     public function weeklyreport(Request $request)
     {
         $course = $request->input('course');
@@ -64,10 +65,9 @@ class S3courseController extends Controller
         $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
         return view('level_3.3scourse.3s_weeklyreport', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name', 'to', 'from'));
 
-        //return view('level_3.3scourse.3s', compact('course', 'to', 'from'));
-        //dd($from);
     }
 
+    /*function for preparing final_persentage_report of perticular 3s subject*/
     public function finalreport(Request $request)
     {
         $course = $request->input('course');
@@ -84,45 +84,7 @@ class S3courseController extends Controller
         return view('level_3.3scourse.3s_finalreport', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
     }
 
-    public function finalreport_download()
-    {
-        //$course = $request->input('course');
-        $course ='CSC304S3';
-        $semester = DB::table('variables')->where('name', 'semester')->value('value');
-        $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-        $s3_courses = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
-        $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->paginate(10);
-        $count3s = Student::where('st_level', '3S')->count();
-        $s3_cname = Course::where('course_level', '3S')->where('course_code', $course)->select('course_name','semester')->get();
-        $s3_coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-        $s3_hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
-        $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
-        return view('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
-        
-        //$pdf = PDF::loadView('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
-        
-        //return $pdf->setPaper('a4', 'landscape')->download('report-list.pdf');
-    }
-
-
-    public function downloadPDF()
-    {
-       // $pdf = PDF::loadView('level_3.3scourse.3s_finalreport_pdfdownload');
-        $pdf = PDF::loadView('dommy');
-        
-        return $pdf->setPaper('a4', 'landscape')->download('report-list.pdf');
-        //return view('dommy');
-    }
-
-
-
-    // public function pdfmaker(){
-    //     $pdf= App::make('dompdf.wrapper');
-    //     $data='<h1 style = color:red;> hello world</h1>';
-    //     $pdf ->loadHTML($data);
-    //     return $pdf->stream();
-    // }
-   /*pdfview try*/
+   /*every 3S indiviual subject final Percentage Report pdfview & download */
     public function pdfmaker(Request $request){
         $course = $request->input('course');
         $pdf= App::make('dompdf.wrapper');
@@ -143,11 +105,9 @@ class S3courseController extends Controller
        // return $pdf ->download('report.pdf');
        return $pdf->stream();
         //return view('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
-     }
+    }
 
-
-
-
+    /*All 3S subject final Percentage Report pdfview & download */
      public function pdfmaker3s(){
         
         $pdf= App::make('dompdf.wrapper');
@@ -162,11 +122,9 @@ class S3courseController extends Controller
      
        return $pdf->stream();
        
-     }
+    }
     
-      /* 3s final semester report */
- 
-
+    /* 3s final semester report */
     public function finalreport3s(){
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
@@ -182,8 +140,7 @@ class S3courseController extends Controller
     }
 
 
-  /* 3s final weekly report */
-
+    /* 3s final weekly report */
     public function weeklyreport3s(Request $request){
         $to = $request->input('todate');
         $from = $request->input('fromdate');
@@ -196,6 +153,36 @@ class S3courseController extends Controller
         
         return view('level_3.3scourse.3s_report', compact('course','semester','s3_st','attendances','s3_hourssum','to','from')); 
 
+    }
+
+    /* ################################## */
+    public function finalreport_download()
+    {
+        //$course = $request->input('course');
+        $course ='CSC304S3';
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
+        $s3_courses = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
+        $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->paginate(10);
+        $count3s = Student::where('st_level', '3S')->count();
+        $s3_cname = Course::where('course_level', '3S')->where('course_code', $course)->select('course_name','semester')->get();
+        $s3_coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
+        $s3_hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+        $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
+        return view('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
+        
+        //$pdf = PDF::loadView('level_3.3scourse.3s_finalreport_pdfdownload', compact('course', 'attendances', 's3_courses','s3_st','count3s','s3_coursecount','s3_cname','s3_hourssum','lecturer_name'));
+        
+        //return $pdf->setPaper('a4', 'landscape')->download('report-list.pdf');
+    }
+
+    public function downloadPDF()
+    {
+       // $pdf = PDF::loadView('level_3.3scourse.3s_finalreport_pdfdownload');
+        $pdf = PDF::loadView('dommy');
+        
+        return $pdf->setPaper('a4', 'landscape')->download('report-list.pdf');
+        //return view('dommy');
     }
 
 

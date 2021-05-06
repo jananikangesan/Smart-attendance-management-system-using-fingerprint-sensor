@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth', 'role']], function() {
 //   Route::get('/course', function () {
 //     return view('courses.courseregister');
 //   });
+
+//   Route::group(['middleware' => 'islecturers'], function () {
+//   Route::get('/course', 'Course_LecturerController@lecturer_show')->name('lecturer_show');
+//   });
   Route::get('/course',[CourseController::class ,'create']);
   
   Route::get('/lecturer', function () {
@@ -79,10 +83,6 @@ Route::group(['middleware' => ['auth', 'role']], function() {
   Route::patch('/lecturer/update/{id}', [LecturerController::class, 'update']) ->name('lecturer_update');
   Route::delete('/lecturer/delete/{id}', [LecturerController::class, 'destroy']) ->name('lecturer_delete');
 
-//   Route::group(['middleware' => 'islecturers'], function () {
-//   Route::get('/course', 'Course_LecturerController@lecturer_show')->name('lecturer_show');
-//   });
-
   Route::any('/tables/courses',[CourseController::class,'index']);
   Route::post('/course/store',[CourseController::class,'store']);
   Route::get('/course/edit/{id}', [CourseController::class, 'edit']) ->name('course_edit');
@@ -95,36 +95,44 @@ Route::group(['middleware' => ['auth', 'role']], function() {
   Route::patch('/student/update/{id}', [StudentController::class, 'update']) ->name('student_update');
   Route::delete('/student/delete/{id}', [StudentController::class, 'destroy']) ->name('student_delete');
 
-  Route::get('/level3s', 'S3courseController@index');
-  Route::any('/attendance', 'S3courseController@attendance')->name('attendance');
-  Route::any('/weeklyreport', 'S3courseController@weeklyreport')->name('weeklyreport');
-  Route::any('/finalreport', 'S3courseController@finalreport')->name('finalreport');
+  /* level - 3S */
+  Route::get('/level3s', 'S3courseController@index'); /*get all 3s subject of perticular semester layout */
+  Route::any('/attendance', 'S3courseController@attendance')->name('attendance'); /*preparing perticular 3s subject attendance adding absent or peresent */
+  Route::any('/weeklyreport', 'S3courseController@weeklyreport')->name('weeklyreport');/*preparing weekly_persentage_report of perticular 3s subject*/
+  Route::any('/finalreport', 'S3courseController@finalreport')->name('finalreport');/*preparing final_persentage_report of perticular 3s subject*/
  // Route::get('/finalreport/downloadpdf', 'S3courseController@finalreport_download')->name('finalreport-downloadpdf');
  // Route::get('/downloadpdf', 'S3courseController@downloadPDF');
 
+  /*get all 3s subject final_report and weekly_final_reporty*/
   Route::any('/3s/finalreport', 'S3courseController@finalreport3s');
   Route::any('/3s/weeklyreport', 'S3courseController@weeklyreport3s');
 
+  /* level - 3G */
   Route::get('/level3g', 'G3courseController@index');
   Route::any('/attendance3g', 'G3courseController@attendance')->name('attendance');
   Route::any('/weeklyreport3g', 'G3courseController@weeklyreport')->name('weeklyreport3g');
   Route::any('/finalreport3g', 'G3courseController@finalreport')->name('finalreport3g');
 
+  /*get all 3g subject final_report and weekly_final_reporty*/ 
   Route::any('/3g/finalreport', 'G3courseController@finalreport3g');
   Route::any('/3g/weeklyreport', 'G3courseController@weeklyreport3g');
 
+  /* level - 3M */
   Route::get('/level3m', 'M3courseController@index');
   Route::any('/attendance3m', 'M3courseController@attendance')->name('attendance');
   Route::any('/weeklyreport3m', 'M3courseController@weeklyreport')->name('weeklyreport3m');
   Route::any('/finalreport3m', 'M3courseController@finalreport')->name('finalreport3m');
 
+  /*get all 3m subject final_report and weekly_final_reporty*/
   Route::any('/3m/finalreport', 'M3courseController@finalreport3m');
   Route::any('/3m/weeklyreport', 'M3courseController@weeklyreport3m');
-  /*pdfview */
+  
+  /*every 3S, 3G, 3M indiviual subject final Percentage Report pdfview & download */
   Route::any('/report3s', 'S3courseController@pdfmaker');
   Route::any('/report3g', 'G3courseController@pdfmaker');
   Route::any('/report3m', 'M3courseController@pdfmaker');
 
+  /*All 3S subject, 3G subject, 3M subject final Percentage Report pdfview & download */
   Route::any('/finalpdf3s', 'S3courseController@pdfmaker3s');
   Route::any('/finalpdf3g', 'G3courseController@pdfmaker3g');
   Route::any('/finalpdf3m', 'M3courseController@pdfmaker3m');
