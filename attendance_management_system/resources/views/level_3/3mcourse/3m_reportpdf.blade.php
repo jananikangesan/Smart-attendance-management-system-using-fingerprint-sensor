@@ -58,9 +58,11 @@
                     <td><p class="t-left" style="color:#000080;"><b>Level: </b>3M</td>
                     <td><p class="t-left" style="color:#000080;"><b>Semester: </b>{{ $semester }}</td>
                 </tr>
+                @if(isset($to))
                 <tr>
-                    <td><p class="t-left" style="color:#000080;"><b>Period: </b></td>
+                    <td><p class="t-left" style="color:#000080;"><b>Period: </b>{{ $from }}<b><u> To </u></b>{{ $to }}</p></td>
                 </tr>
+                @endif
             </table>
         </div>
     </div>
