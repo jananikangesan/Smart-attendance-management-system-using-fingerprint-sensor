@@ -24,7 +24,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ url('/3s/weeklyreport') }}" method="POST">
+                                        <form action="{{ url('/3s/weeklyreport') }}" method="POST" enctype="multpart/form-data">
                                             @csrf
                                             <div class="form-row">
                                                 <div class="col">
@@ -40,8 +40,8 @@
                                             </div>
                                             <div class="form-row justify-content-end p-3">
                                                 {{--<button class="btn btn-info" type="submit">Get Report</button>--}}
-                                                <button class="btn btn-info" type="submit" name="action" value="get_report">Get Report</button>
-                                                <button class="btn btn-info" type="submit" name="action" value="download_pdf">Download</button>
+                                                <button class="btn btn-info mx-3" type="submit" name="action" value="get_report">Get Report</button>
+                                                <button class="btn btn-info" type="submit" name="action" value="download_pdf">Download <i class="fa fa-download" aria-hidden="true"></i></button>
                                             </div>
 
                                         </form>

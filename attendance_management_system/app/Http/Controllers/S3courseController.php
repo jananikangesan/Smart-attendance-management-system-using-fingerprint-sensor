@@ -142,17 +142,33 @@ class S3courseController extends Controller
 
     /* 3s final weekly report */
     public function weeklyreport3s(Request $request){
-        $to = $request->input('todate');
-        $from = $request->input('fromdate');
+        if($request->action == 'get_report'){
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
 
-        $semester = DB::table('variables')->where('name', 'semester')->value('value');
-        $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
-        $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->paginate(10);
-        $attendances = Attendance_3S_Student::with('student')->whereBetween('date', [$from, $to])->get();
-        $s3_hourssum = Attendance_3S_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
+            $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->paginate(10);
+            $attendances = Attendance_3S_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $s3_hourssum = Attendance_3S_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            
+            return view('level_3.3scourse.3s_report', compact('course','semester','s3_st','attendances','s3_hourssum','to','from'));
+        }
+        if($request->action == 'download_pdf'){
+            $pdf= App::make('dompdf.wrapper');
+            
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3S')->where('semester','=', $semester )->select('course_code')->get();
+            $s3_st=Student::where('st_level','3S')->orderBy('st_regno','asc')->get();
+            $attendances = Attendance_3S_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $s3_hourssum = Attendance_3S_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
         
-        return view('level_3.3scourse.3s_report', compact('course','semester','s3_st','attendances','s3_hourssum','to','from')); 
-
+            $pdf -> loadview('level_3.3scourse.3s_reportpdf', compact('course','semester','s3_st','attendances','s3_hourssum','to','from'));
+        
+        return $pdf->stream();
+        }
     }
 
     /* ################################## */
