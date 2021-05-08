@@ -12,6 +12,7 @@ use App;
 
 class M3courseController extends Controller
 {
+    // function for subject of perticular semester layout
     public function index()
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -29,8 +30,8 @@ class M3courseController extends Controller
     //     return view('level_3.3mcourse.3m_course_attendance', compact('course', 'attendances', 'm3_courses'));
     // }
 
-    // function for printing attendance like school register
 
+    /*function for printing attendance like school register*/
     public function attendance(Request $request)
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -47,7 +48,7 @@ class M3courseController extends Controller
         
     }
 
-
+    /*function for preparing final_persentage_report of perticular 3m subject*/
     public function finalreport(Request $request)
     {
         $course = $request->input('course');
@@ -66,6 +67,7 @@ class M3courseController extends Controller
        
     }
 
+    /* function for preparing weekly_persentage_report of perticular 3m subject*/
     public function weeklyreport(Request $request)
     {
         $course = $request->input('course');
@@ -86,6 +88,7 @@ class M3courseController extends Controller
      
     }
 
+    /* 3m final semester report */
     public function finalreport3m(){
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
@@ -96,21 +99,39 @@ class M3courseController extends Controller
        return view('level_3.3mcourse.3m_report', compact('course','semester','m3_st','attendances','m3_hourssum')); 
     }
 
+    /* 3m final weekly report */
     public function weeklyreport3m(Request $request){
-        $to = $request->input('todate');
-        $from = $request->input('fromdate');
+        if($request->action == 'get_report'){
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
 
-        $semester = DB::table('variables')->where('name', 'semester')->value('value');
-        $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
-        $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->paginate(10);
-        $attendances = Attendance_3M_Student::with('student')->whereBetween('date', [$from, $to])->get();
-        $m3_hourssum = Attendance_3M_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+            $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->paginate(10);
+            $attendances = Attendance_3M_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $m3_hourssum = Attendance_3M_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            
+            return view('level_3.3mcourse.3m_report', compact('course','semester','m3_st','attendances','m3_hourssum','to','from'));
+        }
+        if($request->action == 'download_pdf'){
+            $pdf= App::make('dompdf.wrapper');
+            
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+            $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->get();
+            $attendances = Attendance_3M_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $m3_hourssum = Attendance_3M_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
         
-        return view('level_3.3mcourse.3m_report', compact('course','semester','m3_st','attendances','m3_hourssum','to','from')); 
+            $pdf -> loadview('level_3.3mcourse.3m_reportpdf', compact('course','semester','m3_st','attendances','m3_hourssum','to','from'));
+        
+        return $pdf->stream();
+        }
 
     }
 
-
+    /*every 3m indiviual subject final Percentage Report pdfview & download */
     public function pdfmaker(Request $request){
         $course = $request->input('course');
         $pdf= App::make('dompdf.wrapper');
@@ -131,6 +152,8 @@ class M3courseController extends Controller
         return $pdf->stream();
         
      }
+
+     /*All 3m subject final Percentage Report pdfview & download */
      public function pdfmaker3m(){
         
         $pdf= App::make('dompdf.wrapper');

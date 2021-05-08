@@ -11,6 +11,7 @@ use PDF;
 use App;
 class G3courseController extends Controller
 {
+    // function for subject of perticular semester layout
     public function index()
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -33,6 +34,7 @@ class G3courseController extends Controller
 
     // function for printing attendance like school register
 
+    /*function for printing attendance like school register*/
     public function attendance(Request $request)
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
@@ -48,6 +50,7 @@ class G3courseController extends Controller
         return view('level_3.3gcourse.3g', compact('course', 'attendances', 'g3_courses','g3_st','count3g','g3_coursecount','g3_cname','g3_hourssum','lecturer_name'));
     }
 
+    /* function for preparing weekly_persentage_report of perticular 3g subject*/
     public function weeklyreport(Request $request)
     {
         $course = $request->input('course');
@@ -67,6 +70,7 @@ class G3courseController extends Controller
 
     }
 
+    /*function for preparing final_persentage_report of perticular 3g subject*/
     public function finalreport(Request $request)
     {
         $course = $request->input('course');
@@ -84,6 +88,7 @@ class G3courseController extends Controller
        
     }
 
+    /* 3g final semester report */
     public function finalreport3g(){
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $course = Course::where('course_level', '3G')->where('semester','=', $semester )->select('course_code')->get();
@@ -94,20 +99,39 @@ class G3courseController extends Controller
        return view('level_3.3gcourse.3g_report', compact('course','semester','g3_st','attendances','g3_hourssum')); 
     }
 
+    /* 3s final weekly report */
     public function weeklyreport3g(Request $request){
-        $to = $request->input('todate');
-        $from = $request->input('fromdate');
+        if($request->action == 'get_report'){
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
 
-        $semester = DB::table('variables')->where('name', 'semester')->value('value');
-        $course = Course::where('course_level', '3G')->where('semester','=', $semester )->select('course_code')->get();
-        $g3_st=Student::whereIn('st_level', ['3G','3M'])->orderBy('st_regno','asc')->paginate(10);
-        $attendances = Attendance_3G_Student::with('student')->whereBetween('date', [$from, $to])->get();
-        $g3_hourssum = Attendance_3G_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3G')->where('semester','=', $semester )->select('course_code')->get();
+            $g3_st=Student::whereIn('st_level', ['3G','3M'])->orderBy('st_regno','asc')->paginate(10);
+            $attendances = Attendance_3G_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $g3_hourssum = Attendance_3G_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
+            
+            return view('level_3.3gcourse.3g_report', compact('course','semester','g3_st','attendances','g3_hourssum','to','from'));
+        }
+        if($request->action == 'download_pdf'){
+            $pdf= App::make('dompdf.wrapper');
+            
+            $to = $request->input('todate');
+            $from = $request->input('fromdate');
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $course = Course::where('course_level', '3G')->where('semester','=', $semester )->select('course_code')->get();
+            $g3_st=Student::whereIn('st_level', ['3G','3M'])->orderBy('st_regno','asc')->paginate(10);
+            $attendances = Attendance_3G_Student::with('student')->whereBetween('date', [$from, $to])->get();
+            $g3_hourssum = Attendance_3G_Student::whereBetween('date', [$from, $to])->groupBy('course_code')->select('course_code',DB::raw('sum(hours) as sum'))->get();
         
-        return view('level_3.3gcourse.3g_report', compact('course','semester','g3_st','attendances','g3_hourssum','to','from')); 
+            $pdf -> loadview('level_3.3gcourse.3g_reportpdf', compact('course','semester','g3_st','attendances','g3_hourssum','to','from'));
+        
+        return $pdf->stream();
+        }
 
     }
 
+    /*every 3g indiviual subject final Percentage Report pdfview & download */
     public function pdfmaker(Request $request){
         $course = $request->input('course');
         $pdf= App::make('dompdf.wrapper');
@@ -128,6 +152,7 @@ class G3courseController extends Controller
         
      }
 
+     /*All 3S subject final Percentage Report pdfview & download */
      public function pdfmaker3g(){
         
         $pdf= App::make('dompdf.wrapper');
