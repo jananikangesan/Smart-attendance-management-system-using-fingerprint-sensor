@@ -74,16 +74,38 @@ class M3courseController extends Controller
         $to = $request->input('todate');
         $from = $request->input('fromdate');
 
-        $semester = DB::table('variables')->where('name', 'semester')->value('value');
-        $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->whereBetween('date', [$from, $to])->get();
-        $m3_courses = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
-        $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->paginate(10);
-        $count3m = Student::where('st_level', '3M')->count();
-        $m3_cname = Course::where('course_level', '3M')->where('course_code', $course)->select('course_name','semester')->get();
-        $m3_coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
-        $m3_hourssum = Attendance_3M_Student::where('course_code',$course )->whereBetween('date', [$from, $to])->sum('hours');
-        $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
-        return view('level_3.3mcourse.3m_weeklyreport', compact('course', 'attendances', 'm3_courses','m3_st','count3m','m3_coursecount','m3_cname','m3_hourssum','lecturer_name','to', 'from'));
+        if($request->action == 'get_report'){
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->whereBetween('date', [$from, $to])->get();
+            $m3_courses = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+            $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->paginate(10);
+            $count3m = Student::where('st_level', '3M')->count();
+            $m3_cname = Course::where('course_level', '3M')->where('course_code', $course)->select('course_name','semester')->get();
+            $m3_coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
+            $m3_hourssum = Attendance_3M_Student::where('course_code',$course )->whereBetween('date', [$from, $to])->sum('hours');
+            $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
+            return view('level_3.3mcourse.3m_weeklyreport', compact('course', 'attendances', 'm3_courses','m3_st','count3m','m3_coursecount','m3_cname','m3_hourssum','lecturer_name','to', 'from'));
+        }
+        if($request->action == 'download_pdf'){
+            $pdf= App::make('dompdf.wrapper');
+        
+            $semester = DB::table('variables')->where('name', 'semester')->value('value');
+            $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->whereBetween('date', [$from, $to])->get();
+            $m3_courses = Course::where('course_level', '3M')->where('semester','=', $semester )->select('course_code')->get();
+            $m3_st=Student::where('st_level','3M')->orderBy('st_regno','asc')->get();
+            $count3m = Student::where('st_level', '3M')->count();
+            $m3_cname = Course::where('course_level', '3M')->where('course_code', $course)->select('course_name','semester')->get();
+            $m3_coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
+            $m3_hourssum = Attendance_3M_Student::where('course_code',$course )->whereBetween('date', [$from, $to])->sum('hours');
+            $lecturer_name= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('course_code','=', $course)->select('lect_name','lect_title')->get();
+            
+        
+            $pdf -> loadview('level_3.3mcourse.3m_finalreport_pdfdownload', compact('course', 'attendances', 'm3_courses','m3_st','count3m','m3_coursecount','m3_cname','m3_hourssum','lecturer_name', 'to', 'from'));
+    
+            return $pdf->stream();
+        }
+
+        
         
      
     }
