@@ -29,7 +29,7 @@
                                             </button>
                                         </div>
                                             <div class="modal-body">
-                                                <form action="{{ url('/weeklyreport3g') }}" method="POST">
+                                                <form action="{{ url('/weeklyreport3g') }}" method="POST" enctype="multpart/form-data">
                                                 @csrf
                                                     <div class="form-row">
                                                         <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
@@ -43,7 +43,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row justify-content-end p-3">
-                                                        <button class="btn btn-info" type="submit">Get Report</button>
+                                                        <button class="btn btn-info mx-3" type="submit" name="action" value="get_report">Get Report</button>
+                                                        <button class="btn btn-info" type="submit" name="action" value="download_pdf">Download <i class="fa fa-download" aria-hidden="true"></i></button>
                                                     </div>
                                                     
                                                 </form>
