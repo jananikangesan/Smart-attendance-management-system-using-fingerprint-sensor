@@ -61,7 +61,9 @@
                         </tr>
                         <tr>
                             <td><p class="t-left" style="color:#000080;"><b>Number of Lecture Hours: </b>{{ $s3_hourssum ." hours"}}</p></td>
-                            <td><p class="t-left" style="color:#000080;"><b>Period: </b></p></td>
+                            @if(isset($from))
+                                <td><p class="t-left" style="color:#000080;"><b>Period: </b>{{ $from }}<b><u> To </u></b>{{ $to }}</p></td>
+                            @endif
                         </tr>
                     </table>
                 </div>
