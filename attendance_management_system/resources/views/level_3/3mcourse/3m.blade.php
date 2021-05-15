@@ -57,7 +57,7 @@
                                             </button>
                                         </div>
                                             <div class="modal-body">
-                                                <form action="{{ url('/weeklyreport3m') }}" method="POST">
+                                                <form action="{{ url('/weeklyreport3m') }}" method="POST" enctype="multpart/form-data">
                                                 @csrf
                                                     <div class="form-row">
                                                         <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
@@ -71,7 +71,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row justify-content-end p-3">
-                                                        <button class="btn btn-info" type="submit">Get Report</button>
+                                                        <button class="btn btn-info mx-3" type="submit" name="action" value="get_report">Get Report</button>
+                                                        <button class="btn btn-info" type="submit" name="action" value="download_pdf">Download <i class="fa fa-download" aria-hidden="true"></i></button>
                                                     </div>
                                                     
                                                 </form>
@@ -90,6 +91,14 @@
                                     <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
                                 </div>
                                     <button class="btn btn-info" type="submit">Final Report</button>
+                            </form>
+
+                            <form action="{{ url('/report3m') }}" method="POST" target="blank">
+                                @csrf
+                                    <div class="form-row">
+                                        <input type="hidden" class="form-control" name="course" id="course" value="{{ $course }}">
+                                    </div>
+                                    <button class="btn btn-primary" type="submit" ><i class="fa fa-download" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     </div>
