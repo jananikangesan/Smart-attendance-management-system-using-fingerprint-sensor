@@ -139,13 +139,16 @@
      .log-in-pop-left {
          width: 100%;
          padding: 7%;
+         height: 50%;
     }
      .log-in-pop-right {
          width: 100%;
          padding: 7%;
+         height: 50%;
     }
      .log-in-pop {
          width: 75%;
+         height: auto;
     }
      .modal-open .modal {
          width: 100%;

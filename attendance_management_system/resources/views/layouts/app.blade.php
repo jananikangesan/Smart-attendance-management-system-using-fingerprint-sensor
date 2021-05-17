@@ -173,7 +173,7 @@
 <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
     <section>
         <!-- LOGIN SECTION -->
-        <div id="modal10" class="modal fade" role="dialog">
+        <div id="modal10" class="modal" role="dialog">
             <div class="log-in-pop">
                 <div class="log-in-pop-left">
                     <div class="form-group row">
@@ -245,7 +245,7 @@
             </div>
         </div>
         <!-- REGISTER SECTION -->
-        <div id="modal20" class="modal fade" role="dialog">
+        <div id="modal20" class="modal" role="dialog">
             <div class="log-in-pop">
                 <div class="log-in-pop-left">
                     <div class="form-group row">
@@ -322,7 +322,7 @@
             </div>
         </div>
         <!-- FORGOT SECTION -->
-        <div id="modal30" class="modal fade" role="dialog">
+        <div id="modal30" class="modal" role="dialog">
             <div class="log-in-pop">
                 <div class="log-in-pop-left">
                     <div class="form-group row">
@@ -341,7 +341,7 @@
                     </div>
                 </div>
                 <div class="log-in-pop-right">
-                    <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
+                    <a href="#" class="pop-close" data-dismiss="modal"><img src="{{ url('/image/cancel.png') }}" alt="" />
                     </a>
                     <h4>Forgot password</h4>
                     <p style="color:red">please contact the site administrator.</p>
