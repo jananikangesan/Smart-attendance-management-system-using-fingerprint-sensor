@@ -56,7 +56,7 @@ class LoginController extends Controller
                 return redirect()->route('home')->with('success','You are login');
             }
         }else{
-            //return redirect()->route('login')->with('error','Wrong Login Details.');
+            //return redirect()->route('welcome')->with('error','Wrong Login Details.');
             return back()->with('error','Wrong Login Details.');
         }
           
