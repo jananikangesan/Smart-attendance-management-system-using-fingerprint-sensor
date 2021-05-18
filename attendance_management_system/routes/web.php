@@ -21,7 +21,7 @@ use App\Http\Controllers\LevelController;
 
 Route::get('/', function () {
   return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
