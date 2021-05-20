@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\User;
+use Auth;
+use App\Lecturer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +30,10 @@ class HomeController extends Controller
     // }
     public function index()
     {
-        return view('lecturer_dashboard.lecturer');
+        //  $mail =Auth::user()->email;
+        //  $id = Lecturer::where('lect_email', '=', $mail)->select('lect_id')->get();
+        // return view('lecturer_dashboard.lecturer',compact('mail'));
+       return view('lecturer_dashboard.lecturer');
     }
 
     public function adminHome()

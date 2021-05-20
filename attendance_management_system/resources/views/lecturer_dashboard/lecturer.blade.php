@@ -39,7 +39,7 @@
                                 <h4>{{ Auth::user()->name }}</h4>
                                 <h6>{{ Auth::user()->email }}</h6>
                             </li>
-                            <li>Lecturer Id: L17241</li>
+                        <li>Lecturer Id: 123</li>
                         </ul>
                     </div>
                 </div>
