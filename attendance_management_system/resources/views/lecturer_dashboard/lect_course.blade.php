@@ -11,24 +11,24 @@
                     <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
                         <div class="sdb-cl-tim">
                             <div class="sdb-cl-day">
-                                <h5>3S</h5>
+                            <h5>3S </h5>
                             </div>
                             <div class="sdb-cl-class">
-                                @if(isset($courses))
+                                @if(!$course_3s->isEmpty())
                                 <ul>
-                                    @foreach ($courses as $course)
+                                    @foreach ($course_3s as $course3s)
 
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Corse Code">
-                                            <span>{{ $course -> course_code}}</span>
+                                            <span>{{ $course3s -> course_code}}</span>
                                         </div>
                                         <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Course Name">
-                                            <h5>{{ $course -> course_name}}
+                                            <h5>{{ $course3s -> course_name}}
                                             <span>
                                                 <form action="{{ url('/see') }}">
-                                                    <input type="hidden" name="course" value="{{ $course -> course_code}}">
+                                                    <input type="hidden" name="course" value="{{ $course3s -> course_code}}">
                                                     <input style="background-color: coral; color:white;" type="submit" value="get attendance">
                                                 </form>
                                             
@@ -44,7 +44,7 @@
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Message">
-                                            <span>you haven't take a lectere in this semester for 1S</span>
+                                            <span>you haven't take a lectere in this semester for 3S</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -59,21 +59,21 @@
                                 <h5>3M</h5>
                             </div>
                             <div class="sdb-cl-class">
-                                @if(isset($courses))
+                                @if(!$course_3m->isEmpty())
                                 <ul>
-                                    @foreach ($courses as $course)
+                                    @foreach ($course_3m as $course3m)
 
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Corse Code">
-                                            <span>{{ $course -> course_code}}</span>
+                                            <span>{{ $course3m -> course_code}}</span>
                                         </div>
                                         <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Course Name">
-                                            <h5>{{ $course -> course_name}}
+                                            <h5>{{ $course3m -> course_name}}
                                             <span>
                                                 <form action="{{ url('/see') }}">
-                                                    <input type="hidden" name="course" value="{{ $course -> course_code}}">
+                                                    <input type="hidden" name="course" value="{{ $course3m -> course_code}}">
                                                     <input style="background-color: coral; color:white;" type="submit" value="get attendance">
                                                 </form>
                                             
@@ -89,7 +89,7 @@
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Message">
-                                            <span>you haven't take a lectere in this semester for 1S</span>
+                                            <span>you haven't take a lectere in this semester for 3M</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -104,21 +104,22 @@
                                 <h5>3G</h5>
                             </div>
                             <div class="sdb-cl-class">
-                                @if(isset($courses))
+                            
+                                @if(!$course_3g->isEmpty())
                                 <ul>
-                                    @foreach ($courses as $course)
+                                    @foreach ($course_3g as $course3g)
 
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Corse Code">
-                                            <span>{{ $course -> course_code}}</span>
+                                            <span>{{ $course3g -> course_code}}</span>
                                         </div>
                                         <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Course Name">
-                                            <h5>{{ $course -> course_name}}
+                                            <h5>{{ $course3g -> course_name}}
                                             <span>
                                                 <form action="{{ url('/see') }}">
-                                                    <input type="hidden" name="course" value="{{ $course -> course_code}}">
+                                                    <input type="hidden" name="course" value="{{ $course3g -> course_code}}">
                                                     <input style="background-color: coral; color:white;" type="submit" value="get attendance">
                                                 </form>
                                             
@@ -134,7 +135,7 @@
                                     <li>
                                         <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Message">
-                                            <span>you haven't take a lectere in this semester for 1S</span>
+                                            <span>you haven't take a lectere in this semester for 3G</span>
                                         </div>
                                     </li>
                                 </ul>
