@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\User\UserpageController;
 //use App\Http\Middleware\IsLecturers;
 /*
 |--------------------------------------------------------------------------
@@ -202,3 +203,6 @@ Route::group([
     Route::delete('/attendance_3_m__student/{attendance3MStudent}','Attendance3MStudentsController@destroy')
          ->name('attendance_3_m__students.attendance_3_m__student.destroy')->where('id', '[0-9]+');
 });
+
+Route::get('/see', 'User\UserpageController@seecourse');
+//Route::get('/see',[CourseController::class ,'create']);

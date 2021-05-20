@@ -19,7 +19,7 @@
                         <li><a href="dashboard.html" class="pro-act">My Dashboard</a></li>
                         <li><a href="{{url('/profile')}}">Profile</a></li>
                         <li>
-                            <a href="db-courses.html">Courses</a>
+                            <a href="{{url('/see')}}">Courses</a>
                         </li>
                         {{--<li><a href="db-exams.html">Exams</a></li>
                         <li><a href="db-time-line.html">Time Line</a></li>--}}
