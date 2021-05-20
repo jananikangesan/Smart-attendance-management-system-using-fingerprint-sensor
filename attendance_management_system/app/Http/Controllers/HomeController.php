@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-namespace App\Http\Controllers\User;
-use Auth;
-use App\Lecturer;
-use Illuminate\Support\Facades\DB;
+//namespace App\Http\Controllers\User;
+//use Auth;
+//use App\Lecturer;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

@@ -16,11 +16,16 @@ class UserpageController extends Controller
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
         $mail =Auth::user()->email;
-        $course_3s= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3S')->where('semester','=', $semester)->get();
-        $course_3m= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3M')->where('semester','=', $semester)->get();
-        $course_3g= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3G')->where('semester','=', $semester)->get();
+
+       // $course_3s= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3S')->where('semester','=', $semester)->get();
+       // $course_3m= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3M')->where('semester','=', $semester)->get();
+       // $course_3g= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3G')->where('semester','=', $semester)->get();
         
-        return view('lecturer_dashboard.lect_course', compact('course_3s','course_3g','course_3m'));
+        $courses= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('semester','=', $semester)->orderBy('course_level','asc')->get();
+        
+        $levels=Course::select('course_level')->orderBy('course_level','asc')->groupBy('course_level')->get();
+        
+        return view('lecturer_dashboard.lect_course', compact('courses','levels'));
        
     }
 }
