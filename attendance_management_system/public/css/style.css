@@ -2955,6 +2955,13 @@
      width: 25%;
      border-right: 1px solid #dcdcdc;
 }
+
+.sdb-cl-class-tims{
+    float: left;
+    width: 100%;
+    border-left: 1px solid #dcdcdc;
+    padding-left: 10px;
+}
  .sdb-cl-class-tim span{
      display: block;
      color: #203245;
