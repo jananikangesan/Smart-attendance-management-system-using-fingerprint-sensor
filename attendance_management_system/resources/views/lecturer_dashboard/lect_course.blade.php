@@ -8,67 +8,68 @@
                 to using 'Content here, content here', making it look like readable English.</p>--}}
             <div class="tour_head1 udb-time-line days">
                 <ul>
-                   
+                    @foreach($levels as $level)
                     <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
                         <div class="sdb-cl-tim">
-                            @foreach($levels as $level)
                             <div class="sdb-cl-day">
-                            <h5>{{$level->course_level}} </h5>
+                                <h5>{{$level->course_level}} </h5>
                             </div>
                             <div class="sdb-cl-class">
-                                
                                 <ul>
 
-                                   @php
-                                    $i=0;   
-                                   @endphp
-                                    @foreach ($courses as $course)
-                                      @if($course->course_level ==$level->course_level)
-                                    <li>
-                                        <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
-                                            data-tooltip="Corse Code">
-                                            <span>{{ $course -> course_code}}</span>
-                                        </div>
-                                        <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50"
-                                            data-tooltip="Course Name">
-                                            <h5>{{ $course -> course_name}}
-                                            <span>
-                                                <form action="{{ url('/see') }}">
-                                                    <input type="hidden" name="course" value="{{ $course -> course_code}}">
-                                                    <input style="background-color: coral; color:white;" type="submit" value="get attendance">
-                                                </form>
-                                            
-                                            </span></h5>
-                                            {{--<span class="sdn-hall-na">Apj Hall 112</span>--}}
-                                        </div>
-                                    </li>
                                     @php
-                                    $i=$i+1;   
-                                   @endphp
-                                    @endif
+                                        $i=0;
+                                    @endphp
+                                    @foreach ($courses as $course)
+                                        @if($course->course_level ==$level->course_level)
+                                            <li>
+                                                <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
+                                                    data-tooltip="Corse Code">
+                                                    <span>{{ $course -> course_code}}</span>
+                                                </div>
+                                                <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50"
+                                                    data-tooltip="Course Name">
+                                                    <h5>{{ $course -> course_name}}
+                                                        <span>
+                                                            <form action="{{ url('/seeatt') }}" method="post">
+                                                            {{ method_field('POST') }}
+                                                            @csrf
+                                                                <input type="hidden" name="course" value="{{ $course -> course_code}}">
+                                                                <input type="hidden" name="course_level" value="{{ $course -> course_level}}">
+                                                                <input type="hidden" name="course_name" value="{{ $course -> course_name}}">
+                                                                <input style="background-color: coral; color:white;" type="submit" value="get attendance">
+                                                            </form>
+
+                                                        </span></h5>
+                                                    {{--<span class="sdn-hall-na">Apj Hall 112</span>--}}
+                                                </div>
+                                            </li>
+                                            @php
+                                                $i=$i+1;
+                                            @endphp
+                                        @endif
                                     @endforeach
 
-                                   
-                                <ul>
-                                    <li>
-                                        <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50"
-                                            data-tooltip="Message">
-                                            @php
-                                            if($i==0) {
-                                                echo "<span> you haven't take a lectere in this semester for {$level->course_level}</span>";  
-                                            } 
-                                           @endphp
-                                          
-                                        </div>
-                                    </li>
-                                </ul>  
-                                </ul> 
+
+                                    <ul>
+                                        <li>
+                                            <div class="sdb-cl-class-tims tooltipped" data-position="top" data-delay="50"
+                                                data-tooltip="Message">
+                                                @php
+                                                if($i==0) {
+                                                echo "<span> you haven't take a lectere in this semester for
+                                                    {$level->course_level}</span>";
+                                                }
+                                                @endphp
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </ul>
                             </div>
-                            @endforeach
                         </div>
                     </li>
-                    
-             
+                    @endforeach
                 </ul>
             </div>
         </div>

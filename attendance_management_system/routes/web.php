@@ -205,4 +205,7 @@ Route::group([
 });
 
 Route::get('/see', 'User\UserpageController@seecourse');
+Route::any('/seeatt', 'User\UserpageController@seeatt');
+Route::any('/att', 'User\UserpageController@att');
+Route::any('/weeklyatt', 'User\UserpageController@weeklyatt');
 //Route::get('/see',[CourseController::class ,'create']);
