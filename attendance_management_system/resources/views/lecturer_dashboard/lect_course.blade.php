@@ -57,8 +57,8 @@
                                                 data-tooltip="Message">
                                                 @php
                                                 if($i==0) {
-                                                echo "<span> you haven't take a lectere in this semester for
-                                                    {$level->course_level}</span>";
+                                                echo "<b> you haven't take a lectere in this semester for
+                                                    {$level->course_level}</b>";
                                                 }
                                                 @endphp
 
