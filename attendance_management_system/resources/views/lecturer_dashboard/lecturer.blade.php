@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="col-md-9 col-md-offset-3">
                     <ul>
-                        <li><a href="dashboard.html" class="pro-act">My Dashboard</a></li>
+                        <li><a href="" class="pro-act">My Dashboard</a></li>
                         <li><a href="{{url('/profile')}}">Profile</a></li>
                         <li>
                             <a href="{{url('/see')}}">Courses</a>

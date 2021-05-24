@@ -5,6 +5,8 @@ use Auth;
 use App\Lecturer;
 use App\Course;
 use App\Models\Attendance_3S_Student;
+use App\Models\Attendance_3M_Student;
+use App\Models\Attendance_3G_Student;
 use App\Student;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -48,16 +50,16 @@ class UserpageController extends Controller
 
         if($request->course_level == '3M')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->get();
+            $coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
+            $hourssum = Attendance_3M_Student::where('course_code',$course )->sum('hours');
         }
 
         if($request->course_level == '3G')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = Attendance_3G_Student::with('student')->where('course_code','=', $course)->get();
+            $coursecount = Attendance_3G_Student::where('course_code',$course )->count('date');
+            $hourssum = Attendance_3G_Student::where('course_code',$course )->sum('hours');
         }
 
         if($request->course_level == '1S' )
@@ -89,16 +91,16 @@ class UserpageController extends Controller
 
         if($request->course_level == '3M')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = Attendance_3M_Student::with('student')->where('course_code','=', $course)->get();
+            $coursecount = Attendance_3M_Student::where('course_code',$course )->count('date');
+            $hourssum = Attendance_3M_Student::where('course_code',$course )->sum('hours');
         }
 
         if($request->course_level == '3G')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = Attendance_3G_Student::with('student')->where('course_code','=', $course)->get();
+            $coursecount = Attendance_3G_Student::where('course_code',$course )->count('date');
+            $hourssum = Attendance_3G_Student::where('course_code',$course )->sum('hours');
         }
 
         if($request->course_level == '1S' )
