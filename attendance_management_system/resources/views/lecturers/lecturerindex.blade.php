@@ -6,7 +6,7 @@
             <div class="col-sm-12">
                 <div style="margin: 15px;" class="row">
                     <div class="col-sm-4">
-                        <a href="{{ url('/lecturer') }}"
+                        <a href="{{ url('/user/create') }}"
                             class="btn btn-primary">New Lecturer</a>
                     </div>
                     <div class="col-sm-4 offset-sm-4">

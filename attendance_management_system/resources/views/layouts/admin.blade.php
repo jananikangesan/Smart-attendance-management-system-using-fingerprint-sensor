@@ -87,7 +87,7 @@
             <li><a href="#registerdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user-plus"></i>Register</a>
               <ul id="registerdropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ url('/student') }}">Student</a></li>
-                <li><a href="{{ url('/lecturer') }}">Lecturer</a></li>
+                <li><a href="{{ url('/user/create') }}">Lecturer</a></li>
                 <li><a href="{{ url('/admin') }}">Admin</a></li>
               </ul>
             </li>

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\User;
+use App\Lecturer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +32,7 @@ class Usercontroller extends Controller
         else{
             $users = User::paginate(10);
         }
-        return View('users.userindex', compact('users'));
+        return view('users.userindex', compact('users'));
     }
 
     /**
@@ -42,7 +42,7 @@ class Usercontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('users.usercreate');
     }
 
     /**
@@ -53,7 +53,33 @@ class Usercontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required',
+            'lect_title'=> 'required',
+            'lect_name' => 'required',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'position' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/[a-z]/','regex:/[A-Z]/','regex:/[a-z]/','regex:/[0-9]/','regex:/[@$!%*#?&]/'],
+        ]);
+
+        $lecturer = new Lecturer([
+            'lect_title' => $request->get('lect_title'),
+            'lect_name' => $request->get('lect_name'),
+            'lect_email' => $request->get('email'),
+            'position' => $request->get('position'),
+        ]);
+        $lecturer->save();
+
+        $user = new User([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'role' => $request->get('role'),
+            'password' => Hash::make( $request->get('password')),
+        ]);
+        $user->save();
+
+        return redirect('/tables/users')->with('success', 'User saved!');
     }
 
     /**
