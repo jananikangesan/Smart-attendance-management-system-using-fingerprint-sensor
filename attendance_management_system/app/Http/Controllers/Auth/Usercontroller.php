@@ -82,6 +82,26 @@ class Usercontroller extends Controller
         return redirect('/tables/users')->with('success', 'User saved!');
     }
 
+    public function adminstore(Request $request)
+    {
+        $request->validate([
+            'role' => 'required',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/[a-z]/','regex:/[A-Z]/','regex:/[a-z]/','regex:/[0-9]/','regex:/[@$!%*#?&]/'],
+        ]);
+
+        $user = new User([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'role' => $request->get('role'),
+            'password' => Hash::make( $request->get('password')),
+        ]);
+        $user->save();
+
+        return redirect('/tables/users')->with('success', 'User saved!');
+    }
+
     /**
      * Display the specified resource.
      *

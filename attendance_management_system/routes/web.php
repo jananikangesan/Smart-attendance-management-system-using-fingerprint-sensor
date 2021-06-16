@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
   Route::any('/tables/users', 'Auth\UserController@index');
   Route::get('/user/create', 'Auth\UserController@create');
   Route::post('/user/store', 'Auth\UserController@store')->name('user.register');
+  Route::post('/admin/store', 'Auth\UserController@adminstore')->name('admin.register');
   Route::get('/user/edit/{id}', 'Auth\UserController@edit')->name('edit');
   Route::patch('/user/update/{id}', 'Auth\UserController@update')->name('update');
   Route::delete('/user/delete/{id}', 'Auth\UserController@destroy')->name('delete');

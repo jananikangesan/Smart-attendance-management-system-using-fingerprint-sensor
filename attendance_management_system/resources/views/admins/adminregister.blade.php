@@ -18,10 +18,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{ __('Admin Register') }}</div>
+                <div class="card-header text-center">{{ __('Another Admin Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.register') }}">
+                    <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">

@@ -6,7 +6,8 @@
         <div class="col-sm-12">
             <div style="margin: 15px;" class="row">
                 <div class="col-sm-4">
-                    {{--<a href="{{ url('/user') }}" class="btn btn-primary">New User</a>--}}
+                    <a href="{{ url('/user/create') }}" class="btn btn-primary">New lecturer</a>
+                    <a href="{{ url('/admin') }}" class="btn btn-warning" style="color:#ffffff">New Admin</a>
                 </div>
                 <div class="col-sm-4 offset-sm-4">
                     <form action="{{ url('/tables/users') }}" method="POST" role="search">
