@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
 
   Route::get('/semester',[SemesterController::class,'index']);
   Route::post('/seme-update',[SemesterController::class,'update']);
+  Route::post('/year-update',[SemesterController::class,'yearupdate']);
 
   Route::get('/level/update',[LevelController::class,'index']);
   Route::get('/level-4/update',[LevelController::class,'updatefour']);
