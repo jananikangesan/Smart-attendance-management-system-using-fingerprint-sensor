@@ -33,6 +33,22 @@ class UserpageController extends Controller
        
     }
 
+    public function seeallcourses()
+    {
+        $semester = DB::table('variables')->where('name', 'semester')->value('value');
+        $mail =Auth::user()->email;
+
+       // $course_3s= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3S')->where('semester','=', $semester)->get();
+       // $course_3m= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3M')->where('semester','=', $semester)->get();
+       // $course_3g= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('course_level', '3G')->where('semester','=', $semester)->get();
+        //$courses= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('lect_email', '=', $mail)->where('semester','=', $semester)->orderBy('course_level','asc')->get();
+        $courses= Course::join('lecturers','courses.lect_id','=','lecturers.lect_id')->where('semester','=', $semester)->orderBy('course_level','asc')->get();
+        $levels=Course::select('course_level')->orderBy('course_level','asc')->groupBy('course_level')->get();
+        
+        return view('lecturer_dashboard.lect_course', compact('courses','levels'));
+       
+    }
+
     public function seeatt(Request $request)
     {
         //dd($request -> course_level);
@@ -62,11 +78,11 @@ class UserpageController extends Controller
             $hourssum = Attendance_3G_Student::where('course_code',$course )->sum('hours');
         }
 
-        if($request->course_level == '1S' )
+        if($request->course_level == '1S' || $request->course_level == '1G' || $request->course_level == '2S' || $request->course_level == '2G')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = 0;
+            $coursecount = 0;
+            $hourssum = 0;
         }
             $st=Student::where('st_level', '=', $level)->orderBy('st_regno','asc')->paginate(20);
             $count3s = Student::where('st_level', '=', $level)->count();
@@ -103,11 +119,11 @@ class UserpageController extends Controller
             $hourssum = Attendance_3G_Student::where('course_code',$course )->sum('hours');
         }
 
-        if($request->course_level == '1S' )
+        if($request->course_level == '1S' || $request->course_level == '1G' || $request->course_level == '2S' || $request->course_level == '2G')
         {
-            $attendances = Attendance_3S_Student::with('student')->where('course_code','=', $course)->get();
-            $coursecount = Attendance_3S_Student::where('course_code',$course )->count('date');
-            $hourssum = Attendance_3S_Student::where('course_code',$course )->sum('hours');
+            $attendances = 0;
+            $coursecount = 0;
+            $hourssum = 0;
         }
 
         if($request->action == 'get_report'){

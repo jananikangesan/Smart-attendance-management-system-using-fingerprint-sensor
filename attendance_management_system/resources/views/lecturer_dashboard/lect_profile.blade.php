@@ -44,12 +44,14 @@
             </tbody>
         </table>
         <div class="sdb-bot-edit">
-            {{--<a href="#" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit my profile</a>--}}
+        {{--<a href="{{ route('edit-profile') }}" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit my profile</a>
             <a href="{{ route('edit-profile') }}" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();">
-                <i class="fa fa-pencil" aria-hidden="true"></i> Edit my profile
+                <i class="fa fa-pencil" aria-hidden="true"></i> Edit my profile--}}
                 <form id="edit-form" action="{{ route('edit-profile') }}" method="POST" class="d-none">
                 @csrf
-                    <input type="text" name="lect_id" id="lect_id" value="{{ $lect -> lect_id }}">
+                    <input type="hidden" name="lect_id" id="lect_id" value="{{ $lect -> lect_id }}">
+
+                    <button class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit my profile</a></button>
                 </form>
             </a>
         </div>
