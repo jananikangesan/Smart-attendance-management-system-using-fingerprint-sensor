@@ -53,7 +53,7 @@ class LoginController extends Controller
             if (auth()->user()->role == 1) {
                 return redirect()->route('admindashboard');
             }else{
-                return redirect()->route('home')->with('success','You are login');
+                return redirect()->route('profile')->with('success','You are login');
             }
         }else{
             //return redirect()->route('welcome')->with('error','Wrong Login Details.');

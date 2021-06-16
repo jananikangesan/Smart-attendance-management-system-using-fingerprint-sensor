@@ -16,11 +16,16 @@
             <div class="container">
                 <div class="col-md-9 col-md-offset-3">
                     <ul>
-                        <li><a href="dashboard.html" class="pro-act">My Dashboard</a></li>
+                        <li><a href="" class="pro-act">My Dashboard</a></li>
                         <li><a href="{{url('/profile')}}">Profile</a></li>
                         <li>
                             <a href="{{url('/see')}}">Courses</a>
                         </li>
+                        @if(Auth::user()->role == 2)
+                        <li>
+                            <a href="{{url('/seeall')}}">All Courses</a>
+                        </li>
+                        @endif
                         {{--<li><a href="db-exams.html">Exams</a></li>
                         <li><a href="db-time-line.html">Time Line</a></li>--}}
                     </ul>
@@ -36,10 +41,11 @@
                     <div class="pro-user-bio">
                         <ul>
                             <li>
-                                <h4>{{ Auth::user()->name }}</h4>
-                                <h6>{{ Auth::user()->email }}</h6>
+                                <h3 style="color: #000080;">{{ Auth::user()->name }}</h3>
+                                <h6 style="color: #5DADE2;"> Department of Computer Science</h6>
+                                <h6 style="color: #5DADE2;"> Faculty of Science</h6>
+                                <h5 style="color: #5DADE2;">{{ Auth::user()->email }}</h5>
                             </li>
-                        <li>Lecturer Id: 123</li>
                         </ul>
                     </div>
                 </div>

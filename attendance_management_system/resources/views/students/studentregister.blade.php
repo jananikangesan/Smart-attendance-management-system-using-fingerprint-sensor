@@ -144,10 +144,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                {{--<div class="form-group row">
                                     <label for="st_fid" class="col-lg-4 col-form-label text-lg-right">{{ __('Fingerprint ID') }}</label>
                                     <div class="col-lg-6">
-                                        <input id="st_fid" type="text" class="form-control @error('st_fid') is-invalid @enderror" name="st_fid" value="{{ old('st_fid') }}" placeholder="fingerprint id"  autocomplete="st_fid">
+                                        <input id="st_fid" type="file" class=" @error('st_fid') is-invalid @enderror" name="st_fid" value="{{ old('st_fid') }}"  autocomplete="st_fid">
                                         @error('st_fid')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -155,6 +155,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                --}}
                                 <div class="form-group row mb-0">
                                     <div class="col-lg-6 offset-lg-4">
                                         <button type="submit" class="btn btn-primary">

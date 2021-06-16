@@ -99,11 +99,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4 custom-control custom-radio custom-control-inline">
+                                    <div class="col-md-8 offset-md-4 custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="password1" name="password" class="custom-control-input" value="!password">
                                         <label class="custom-control-label" for="password1">change password</label>
+                                        <p class="custom-control" style="color: #aa21fa;">set to default "!password"</p>
                                     </div>
-                                    <div class="col-md-6 offset-md-4 custom-control custom-radio custom-control-inline">
+                                    <div class="col-md-8 offset-md-4 custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="password2" name="password" class="custom-control-input" value="password!">
                                         <label class="custom-control-label" for="password2">don't change password</label>
                                     </div>
