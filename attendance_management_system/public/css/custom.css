@@ -27,12 +27,38 @@
 }
 
 .h1font{
-    font-family: 'Aclonica';
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 50px;
 }
 
 .h4font{
     font-family: 'Orbitron', sans-serif;
     font-weight: 200;
+}
+
+.buttonfont{
+  font-weight: 100;
+}
+
+.list-group-item-cu{
+    position: relative;
+    display: block;
+    /* margin: 0.75rem 1.25rem; */
+    background-color: #232323 !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding:0 !important;
+  }
+
+  .text{
+    text-align: right;
+  }
+
+  .text-left{
+      text-align: left;
+  }
+
+  .t-left{
+    text-align: left;
 }
 
 @media screen and (min-width: 576px) {
@@ -45,6 +71,18 @@
     h1.h1font {
       font-size: 20px;
     }
+    button.buttonfont{
+      font-size: 13px;
+    }
+    p.t-left{
+      text-align: center;
+    }
+}
+
+@media screen and (max-width: 769px) {
+  p.t-left{
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -52,15 +90,27 @@
       font-size: 50px;
     }
 }
+
+@media screen and (max-width: 992px) {
+  h1.h1font {
+    font-size: 30px;
+  }
+  p.text{
+    text-align: center;
+  }
+  p.text-left{
+    text-align: center;
+}
+}
   
 @media screen and (min-width: 992px) {
     h1.h1font {
-      font-size: 70px;
+      font-size: 40px;
     }
 }
 
 @media screen and (min-width: 1400px) {
     h1.h1font {
-      font-size: 80px;
+      font-size: 50px;
     }
 }

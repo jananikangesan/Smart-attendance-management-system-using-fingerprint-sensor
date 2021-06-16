@@ -16,9 +16,10 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('st_id');
             $table->string('st_name');
-            $table->string('st_regno',12)->unique();
+            $table->string('st_regno',16)->unique();
             $table->string('st_level');
             $table->string('st_acyear');
+            $table->string('st_fid')->nullable();
             $table->timestamps();
         });
     }

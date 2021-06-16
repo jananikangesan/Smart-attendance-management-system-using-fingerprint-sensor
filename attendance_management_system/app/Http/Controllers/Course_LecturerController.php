@@ -19,4 +19,5 @@ class Course_LecturerController extends Controller
         $alecturers = Lecturer::where('position', 'assistentlecturer')->get();
         return view('courses.courseregister', compact('lecturers','alecturers'));
     }
+
 }

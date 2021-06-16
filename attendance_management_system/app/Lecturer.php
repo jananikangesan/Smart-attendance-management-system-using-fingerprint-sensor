@@ -29,7 +29,7 @@ class Lecturer extends Model
      * @var array
      */
     protected $fillable = [
-        'lect_name', 'lect_email', 'position',
+        'lect_name', 'lect_email', 'position','lect_title',
     ];
 
     /**

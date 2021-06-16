@@ -8,13 +8,18 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    @if($message = Session::get('info'))
+                        <div class="alert alert-info" role="alert">
+                            {{ $message }}
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ $message }}
+                        </div>
+                    @endif
+                    <!-- you are logged in! -->
                 </div>
             </div>
         </div>

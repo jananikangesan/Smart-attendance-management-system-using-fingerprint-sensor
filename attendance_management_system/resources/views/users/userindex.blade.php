@@ -6,14 +6,15 @@
         <div class="col-sm-12">
             <div style="margin: 15px;" class="row">
                 <div class="col-sm-4">
-                    {{--<a href="{{ url('/user') }}" class="btn btn-primary">New User</a>--}}
+                    <a href="{{ url('/user/create') }}" class="btn btn-primary">New lecturer</a>
+                    <a href="{{ url('/admin') }}" class="btn btn-warning" style="color:#ffffff">New Admin</a>
                 </div>
                 <div class="col-sm-4 offset-sm-4">
                     <form action="{{ url('/tables/users') }}" method="POST" role="search">
                         {{ csrf_field() }}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search_user"
-                                placeholder="Search lecturer and just enter"> <span class="input-group-btn">
+                                placeholder="Search user and just enter"> <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default">
                                     <span class="glyphicon glyphicon-search"></span>
                                 </button>
@@ -29,14 +30,15 @@
                 </div>
                 @endif
             </div>
-            <table class="table table-striped table-hover">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <td>ID</td>
-                        <td>user Name</td>
-                        <td>User Email</td>
-                        <td>User Role</td>
-                        <td colspan=2>Actions</td>
+                        <th>User ID</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                        <th>User Role</th>
+                        <th colspan=2>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,8 +61,9 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
-        </div>
+             </table>
+           </div>
+       </div>
     </div>
 </div>
 {{ $users->links() }}

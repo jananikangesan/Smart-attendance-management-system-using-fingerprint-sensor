@@ -12,9 +12,9 @@
     }
     .vl{
         border-left: 3px solid black;
-        height: 310px;
+        height: 340px;
         position: absolute ;
-        left:34%;
+        /* left:34%; */
         margin-left:-1px;
         top:-1;
     }
@@ -79,17 +79,11 @@
                                 <hr class="vl">
                             </div>
 
-                            <div class="col-lg-7">
-                            {{--<div>
-                                <h3 class="a">COURSE REGISTER</h3><br>
-                            </div>
-                            --}}
-                 
-        
+                            <div class="col-lg-7">     
                                 <div class="form-group row">
                                     <label for="course_code" class="col-lg-4 col-form-label text-lg-right">{{ __('Course Code') }}</label>
                                     <div class="col-lg-6">
-                                        <input id="course_code" type="text" class="form-control @error('course_code') is-invalid @enderror" name="course_code" value="{{ old('course_code') }}" required autocomplete="course_code">
+                                        <input id="course_code" type="text" class="form-control @error('course_code') is-invalid @enderror" name="course_code" value="{{ old('course_code') }}" placeholder="CSCXXXSX or CSCXXXGX" autocomplete="course_code">
                                         @error('course_code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -101,7 +95,7 @@
                                 <div class="form-group row">
                                     <label for="course_name" class="col-lg-4 col-form-label text-lg-right">{{ __('Course Name') }}</label>
                                     <div class="col-lg-6">
-                                        <input id="course_name" type="text" class="form-control @error('course_name') is-invalid @enderror" name="course_name" value="{{ old('course_name') }}" required autocomplete="course_name">
+                                        <input id="course_name" type="text" class="form-control @error('course_name') is-invalid @enderror" name="course_name" value="{{ old('course_name') }}" placeholder="course name" required autocomplete="course_name">
                                         @error('course_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -139,9 +133,9 @@
                                         <select id="lect_id" class="form-control @error('lect_id') is-invalid @enderror" name="lect_id">
                                             <option>Select Lecturer</option>   
                                             @foreach($lecturers as $lecturer)
-                                              <option value="{{$lecturer -> lect_id}}">{{$lecturer -> lect_name}}</option>
+                                              <option value="{{$lecturer -> lect_id}}">{{$lecturer -> lect_title.$lecturer -> lect_name}}</option>
                                             @endforeach
-                                    </select>
+                                        </select>
                                         {{--<input id="lect_id" type="text" class="form-control @error('lect_id') is-invalid @enderror" name="name" value="{{ old('lect_id') }}" required autocomplete="lect_id">--}}
                                         @error('lect_id')
                                             <span class="invalid-feedback" role="alert">
@@ -157,7 +151,7 @@
                                         <select id="assistant_lect_id" class="form-control @error('assistant_lect_id') is-invalid @enderror" name="assistant_lect_id">
                                             <option>Select Assistant Lecturer</option>   
                                             @foreach($alecturers as $alecturer)
-                                                <option value="{{$alecturer -> lect_id}}">{{$alecturer -> lect_name}}</option>
+                                                <option value="{{$alecturer -> lect_id}}">{{$lecturer -> lect_title.$alecturer -> lect_name}}</option>
                                             @endforeach
                                         </select>
                                         {{--<input id="assistant_lect_id" type="text" class="form-control @error('assistant_lect_id') is-invalid @enderror" name="assistant_lect_id" value="{{ old('assistant_lect_id') }}" required autocomplete="assistant_lect_id">--}}
@@ -165,6 +159,22 @@
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="semester" class="col-lg-4 col-form-label text-lg-right">{{ __('Semester') }}</label>
+                                    <div class="col-lg-6">
+                                        <select id="semester" class="form-control @error('semester') is-invalid @enderror" name="semester">
+                                            <option>Select Semester</option>
+                                            <option value="1">Semester 1</option>
+                                            <option value="2">Semester 2</option>
+                                        </select>
+                                        @error('semester')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>

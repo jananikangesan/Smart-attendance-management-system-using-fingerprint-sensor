@@ -51,12 +51,14 @@ class LecturerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'lect_title'=> 'required',
             'lect_name' => 'required',
             'lect_email' => 'required | email',
             'position' => 'required'
         ]);
 
         $lecturer = new Lecturer([
+            'lect_title' => $request->get('lect_title'),
             'lect_name' => $request->get('lect_name'),
             'lect_email' => $request->get('lect_email'),
             'position' => $request->get('position'),
@@ -100,12 +102,14 @@ class LecturerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'lect_title'=> 'required',
             'lect_name' => 'required',
             'lect_email' => 'required | email',
             'position' => 'required'
         ]);
 
         $lecturer = Lecturer::find($id);
+        $lecturer -> lect_title = $request->get('lect_title');
         $lecturer -> lect_name = $request->get('lect_name');
         $lecturer -> lect_email = $request->get('lect_email');
         $lecturer -> position = $request->get('position');

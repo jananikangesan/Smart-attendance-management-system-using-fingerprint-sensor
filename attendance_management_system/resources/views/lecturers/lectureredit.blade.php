@@ -15,9 +15,9 @@
     }
     .vl{
     border-left: 3px solid black;
-    height: 290px;
+    height: 310px;
     position: absolute ;
-    left:33%;
+    left:43%;
     margin-left:-1px;
     top:-1;
     }
@@ -83,6 +83,24 @@
                                 <hr class="vl">
                             </div>
                             <div class="col-lg-7">
+                                <div class="form-group row">
+                                    <label for="lect_title" class="col-lg-4 col-form-label text-lg-right">{{ __('Title') }}</label>
+                                    <div class="col-lg-6">
+                                        <select id="lect_title" class="form-control @error('lect_title') is-invalid @enderror" name="lect_title">
+                                            <option value="Mr." {{($lecturer->lect_title == "Mr.")? 'selected':''}}>Mr</option>
+                                            <option value="Mrs." {{($lecturer->lect_title == "Mrs.")? 'selected':''}}>Mrs</option>
+                                            <option value="Miss." {{($lecturer->lect_title == "Miss.")? 'selected':''}}>Miss</option>
+                                            <option value="Dr." {{($lecturer->lect_title == "Dr.")? 'selected':''}}>Dr</option>
+                                            <option value="Prof." {{($lecturer->lect_title == "Prof.")? 'selected':''}}>Prof</option>
+                                            <option value="Rev." {{($lecturer->lect_title == "Rev.")? 'selected':''}}>Rev</option>
+                                        </select>
+                                        @error('lect_title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
     
                                 <div class="form-group row">
                                     <label for="lect_name" class="col-lg-4 col-form-label text-lg-right">{{ __('lecturer Name') }}</label>

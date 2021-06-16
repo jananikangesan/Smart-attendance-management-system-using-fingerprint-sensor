@@ -17,8 +17,8 @@ class CourseSeeder extends Seeder
             'course_code' => 'CSC301S3',
             'course_name' => 'Computerscience',
             'course_level' => '3S',
-            'lect_id' => '2',
-            'assistant_lect_id' => '3',
+            'lect_id' => '1',
+            'assistant_lect_id' => '2',
         ]);
     }
 }

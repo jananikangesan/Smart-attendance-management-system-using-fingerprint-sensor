@@ -18,7 +18,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Update a user') }}</div>
+                <div class="card-header text-center">{{ __('User Update') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('update', ['id' => $user->id]) }}">
@@ -99,10 +99,22 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <div class="col-md-8 offset-md-4 custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="password1" name="password" class="custom-control-input" value="!password">
+                                        <label class="custom-control-label" for="password1">change password</label>
+                                        <p class="custom-control" style="color: #aa21fa;">set to default "!password"</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-4 custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="password2" name="password" class="custom-control-input" value="password!">
+                                        <label class="custom-control-label" for="password2">don't change password</label>
+                                    </div>
+                                </div>
+
+                                {{--<div class="form-group row">
                                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $user ->password }}" required autocomplete="new-password">
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -118,7 +130,7 @@
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     </div>
-                                </div>
+                                </div>--}}
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-7 offset-md-4">

@@ -1,0 +1,14 @@
+[
+    {
+        "model-name": "Attendance_3S_Student",
+        "resource-file": "attendance_3_s__students.json"
+    },
+    {
+        "model-name": "Attendance_3G_Student",
+        "resource-file": "attendance_3_g__students.json"
+    },
+    {
+        "model-name": "Attendance_3M_Student",
+        "resource-file": "attendance_3_m__students.json"
+    }
+]

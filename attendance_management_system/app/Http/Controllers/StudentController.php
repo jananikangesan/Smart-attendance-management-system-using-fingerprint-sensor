@@ -13,12 +13,24 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::simplePaginate(10);
-
-        return view('students.studentindex', compact('students'));
-
+        //$students = Student::simplePaginate(10);
+        //return view('students.studentindex', compact('students'));
+        $search =  $request->input('search_student');
+        if($search!=""){
+            $students = Student::where(function ($query) use ($search){
+                $query->where('st_name', 'like', '%'.$search.'%')
+                    ->orWhere('st_regno', 'like', '%'.$search.'%')
+                    ->orWhere('st_level', 'like', '%'.$search.'%');
+            })
+            ->paginate(5);
+            $students->appends(['search_student' => $search]);
+        }
+        else{
+            $students = Student::paginate(10);
+        }
+        return View('students.studentindex', compact('students'));
     }
 
     /**
@@ -33,15 +45,16 @@ class StudentController extends Controller
             'st_name' => 'required',
             'st_regno' => 'required',
             'st_level' => 'required',
-            'st_acyear' => 'required'    
+            'st_acyear' => 'required',
+            //'st_fid'   =>'required'
         ]);
 
     $student = new Student([
         'st_name' => $request->get('st_name'),
         'st_regno' => $request->get('st_regno'),
         'st_level' => $request->get('st_level'),
-        'st_acyear' => $request->get('st_acyear')
-        
+        'st_acyear' => $request->get('st_acyear'),
+        'st_fid' => $request->get('st_fid')
          ]);
             
          $student->save();
@@ -75,7 +88,8 @@ class StudentController extends Controller
             'st_name' => 'required',
             'st_regno' => 'required',
             'st_level' => 'required',
-            'st_acyear' => 'required'    
+            'st_acyear' => 'required',
+            //'st_fid'   =>'required'   
         ]);
 
         $student =Student::find($id);
@@ -83,6 +97,7 @@ class StudentController extends Controller
         $student -> st_regno = $request->get('st_regno');
         $student  -> st_level = $request->get('st_level');
         $student  -> st_acyear = $request->get('st_acyear');
+        $student -> st_fid = $request->get('st_fid');
        
 
         $student -> save();

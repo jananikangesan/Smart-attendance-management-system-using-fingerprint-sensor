@@ -50,6 +50,12 @@
                                 <hr class="vl">
                             </div>
                             <div class="col-lg-7">
+                                @if($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">x</button>
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @endif
                                 <div class="form-group row row-content">
                                     <label for="email" class="col-lg-4 col-form-label text-lg-right">{{ __('E-Mail Address') }}</label>
                                     <div class="col-lg-6">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Course;
+use App\Lecturer;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,12 +14,39 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::simplePaginate(10);
+        //$courses = Course::simplePaginate(10);
+        //return view('courses.courseindex', compact('courses'));
+        $search =  $request->input('search_course');
+        $lecturers = Lecturer::all();
+        if($search!=""){
+            $courses = Course::where(function ($query) use ($search){
+                $query->where('course_code', 'like', '%'.$search.'%')
+                    ->orWhere('course_name', 'like', '%'.$search.'%')
+                    ->orWhere('course_level', 'like', '%'.$search.'%');
+            })
+            ->paginate(5);
+            $courses->appends(['search_course' => $search]);
+        }
+        else{
+            $courses = Course::paginate(10);
+        }
+        return View('courses.courseindex', compact('courses', 'lecturers'));
 
-        return view('courses.courseindex', compact('courses'));
+    }
+    /**
+     * Show the form for registering courses.
+     *
+     * @return Illuminate\View\View
+     * @return \Illuminate\Http\Response
+     */
 
+    public function create()
+    {
+        $lecturers = Lecturer::where('position', 'lecturer')->orWhere('position', 'HOD,lecturer')->orWhere('position', 'HOD')->get();
+        $alecturers = Lecturer::where('position', 'assistentlecturer')->get();
+        return view('courses.courseregister', compact('lecturers', 'alecturers'));
     }
 
     /**
@@ -60,8 +88,9 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-
-        return view('courses.courseedit', compact('course'));
+        $editlecturers = Lecturer::where('position', 'lecturer')->orWhere('position', 'HOD,lecturer')->orWhere('position', 'HOD')->get();
+        $editalecturers = Lecturer::where('position', 'assistentlecturer')->get();
+        return view('courses.courseedit', compact('course', 'editlecturers', 'editalecturers'));
     }
 
     /**
@@ -77,8 +106,9 @@ class CourseController extends Controller
             'course_code' => 'required',
             'course_name' => 'required',
             'course_level' => 'required',
-            //'lect_id' => 'required',
-            //'assistant_lect_id' => 'required'
+            'lect_id' => 'required',
+            'assistant_lect_id' => 'required',
+            'semester' => 'required',
            
         ]);
 
@@ -86,8 +116,9 @@ class CourseController extends Controller
         $course -> course_code = $request->get('course_code');
         $course -> course_name = $request->get('course_name');
         $course -> course_level = $request->get('course_level');
-       // $course -> lect_id = $request->get('lect_id');
-        //$course -> assistant_lect_id =$request->get('assistant_lect_id');
+        $course -> lect_id = $request->get('lect_id');
+        $course -> assistant_lect_id =$request->get('assistant_lect_id');
+        $course -> semester =$request->get('semester');
 
         $course -> save();
         return redirect('/tables/courses')->with('success', 'course updated successfully !');
@@ -107,6 +138,5 @@ class CourseController extends Controller
         return redirect('/tables/courses')->with('success', 'course deleted successfully!');
         
     }
-
 
 }

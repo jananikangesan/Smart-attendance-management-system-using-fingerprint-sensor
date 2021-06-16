@@ -15,6 +15,7 @@ class CreateLecturersTable extends Migration
     {
         Schema::create('lecturers', function (Blueprint $table) {
             $table->bigIncrements('lect_id');
+            $table->string('lect_title');
             $table->string('lect_name');
             $table->string('lect_email')->unique();
             $table->string('position');

@@ -12,7 +12,7 @@
     }
     .vl{
         border-left: 3px solid black;
-        height: 310px;
+        height: 340px;
         position: absolute ;
         left:34%;
         margin-left:-1px;
@@ -117,15 +117,15 @@
                                     <div class="col-lg-6">
                                         <select id="course_level" class="form-control @error('course_level') is-invalid @enderror" name="course_level">
                                             
-                                            <option value="1S" {{($course->course_level == "1S")? 'selected':''}} >1S</option>
-                                            <option value="1G" {{($course->course_level == "1G")? 'selected':''}} >1G</option>
+                                            <option value="1S" {{($course->course_level == "1S")? 'selected':''}}>1S</option>
+                                            <option value="1G" {{($course->course_level == "1G")? 'selected':''}}>1G</option>
                                             <option value="2S" {{($course->course_level == "2S")? 'selected':''}}>2S</option>
                                             <option value="2G" {{($course->course_level == "2G")? 'selected':''}}>2G</option>
-                                            <option value="3S" {{($course->course_level == "3S")? 'selected':''}} >3S</option>
-                                            <option value="3G" {{($course->course_level == "3G")? 'selected':''}} >3G</option>
+                                            <option value="3S" {{($course->course_level == "3S")? 'selected':''}}>3S</option>
+                                            <option value="3G" {{($course->course_level == "3G")? 'selected':''}}>3G</option>
                                             <option value="3M" {{($course->course_level == "3M")? 'selected':''}}>3M</option>
-                                            <option value="4S" {{($course->course_level == "4S")? 'selected':''}} >4S</option>
-                                            <option value="4M"{{($course->course_level == "4M")? 'selected':''}} >4M</option>
+                                            <option value="4S" {{($course->course_level == "4S")? 'selected':''}}>4S</option>
+                                            <option value="4M" {{($course->course_level == "4M")? 'selected':''}}>4M</option>
                                         </select>
                                            
                                          @error('course_level')
@@ -141,9 +141,10 @@
                                     <div class="col-lg-6">
                                         <select id="lect_id" class="form-control @error('lect_id') is-invalid @enderror" name="lect_id">
                                             <option>Select Lecturer</option>   
-                                          
+                                            @foreach($editlecturers as $lecturer)
+                                              <option value="{{$lecturer -> lect_id}}" {{($course->lect_id == $lecturer->lect_id)? 'selected':''}} >{{$lecturer -> lect_title.$lecturer -> lect_name}}</option>
+                                            @endforeach
                                         </select>
-                                        {{--<input id="lect_id" type="text" class="form-control @error('lect_id') is-invalid @enderror" name="name" value="{{ old('lect_id') }}" required autocomplete="lect_id">--}}
                                         @error('lect_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -158,13 +159,31 @@
                                     <div class="col-lg-6">
                                         <select id="assistant_lect_id" class="form-control @error('assistant_lect_id') is-invalid @enderror" name="assistant_lect_id">
                                             <option>Select Assistant Lecturer</option>   
-                                          
+                                            @foreach($editalecturers as $alecturer)
+                                              <option value="{{$alecturer -> lect_id}}" {{($course->assistant_lect_id == $alecturer->lect_id)? 'selected':''}}>{{$lecturer -> lect_title.$alecturer -> lect_name}}</option>
+                                            @endforeach
                                         </select>
                                         {{--<input id="assistant_lect_id" type="text" class="form-control @error('assistant_lect_id') is-invalid @enderror" name="assistant_lect_id" value="{{ old('assistant_lect_id') }}" required autocomplete="assistant_lect_id">--}}
                                         @error('assistant_lect_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="semester" class="col-lg-4 col-form-label text-lg-right">{{ __('Semester') }}</label>
+                                    <div class="col-lg-6">
+                                        <select id="semester" class="form-control @error('semester') is-invalid @enderror" name="semester">
+                                            <option>Select Semester</option>
+                                            <option value="1" {{($course->semester == "1")? 'selected':''}}>Semester 1</option>
+                                            <option value="2" {{($course->semester == "2")? 'selected':''}}>Semester 2</option>
+                                        </select>
+                                        @error('semester')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>

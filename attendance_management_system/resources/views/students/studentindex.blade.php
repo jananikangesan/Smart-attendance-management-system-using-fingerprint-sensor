@@ -4,9 +4,24 @@
 <div class="container-fluid"> 
         <div class="row">
             <div class="col-sm-12">
-                <div>
-                    <a style="margin: 19px;" href="{{ url('/student') }}" class="btn
-                btn-primary">New Course</a>
+                <div style="margin: 15px;" class="row">
+                    <div class="col-sm-4">
+                        <a href="{{ url('/student') }}"
+                            class="btn btn-primary">New Student</a>
+                    </div>
+                    <div class="col-sm-4 offset-sm-4">
+                        <form action="{{ url('/tables/students') }}" method="POST" role="search">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search_student" placeholder="Search student and just enter"> <span
+                                    class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-sm-12">
                     @if(session()->get('success'))
@@ -24,6 +39,7 @@
                             <th>Student Registration</th>
                             <th>Student Level</th>
                             <th>academic year</th>
+                            <th>Fingerprint ID</th>
                              <th colspan=2>Actions</th>
                         </tr>
                     </thead>
@@ -35,6 +51,7 @@
                             <td>{{ $student->st_regno }}</td>
                             <td>{{ $student->st_level }}</td>
                             <td>{{ $student->st_acyear }}</td>
+                            <td>{{ $student->st_fid }}</td>
                             <td>
                                 <a href="{{ route('student_edit', ['id' => $student->st_id]) }}" class="btn btn-primary">Edit</a>
                             </td>

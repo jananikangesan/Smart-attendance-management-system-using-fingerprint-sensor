@@ -31,6 +31,6 @@ class Student extends Model
      * @var array
      */
     protected $fillable = [
-        'st_name', 'st_regno', 'st_level','st_acyear',
+        'st_name', 'st_regno', 'st_level','st_acyear','st_fid',
     ];
 }
