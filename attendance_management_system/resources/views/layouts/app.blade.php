@@ -59,9 +59,9 @@
                             <ul>
                                 @guest
                                     <li><a href="" data-toggle="modal" data-target="#modal10">{{ __('Sign In') }}</a></li>
-                                    @if(Route::has('register'))
+                                    {{--@if(Route::has('register'))
                                         <li><a href="" data-toggle="modal" data-target="#modal20">{{ __('Sign Up') }}</a></li>
-                                    @endif
+                                    @endif--}}
                                 @else
                                     <li><a href="{{ url('/') }}">{{ __('Home') }}</a></li>
                                     <li><a href="" data-toggle="modal" data-target="#modal40">{{ __('Password Change') }}</a></li>
@@ -94,9 +94,9 @@
                             <ul>
                                 @guest
                                     <li><a href="" data-toggle="modal" data-target="#modal10">Sign In</a></li>
-                                    @if(Route::has('register'))
+                                    {{--@if(Route::has('register'))
                                         <li><a href="" data-toggle="modal" data-target="#modal20">Sign Up</a></li>
-                                    @endif
+                                    @endif--}}
                                 @else
                                     <li>
                                         <a href="{{ url('/') }}">{{ __('Home') }}</a>
