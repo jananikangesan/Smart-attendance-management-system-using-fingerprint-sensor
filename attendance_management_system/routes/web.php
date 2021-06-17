@@ -44,9 +44,7 @@ Route::any('/weeklyatt', 'User\UserpageController@weeklyatt');
 
 Route::group(['middleware' => ['auth', 'role']], function() {
 
-  Route::get('/student', function () {
-    return view('students.studentregister');
-  });
+  Route::get('/student',[StudentController::class ,'create']);
   
   Route::get('/course',[CourseController::class ,'create']);
   

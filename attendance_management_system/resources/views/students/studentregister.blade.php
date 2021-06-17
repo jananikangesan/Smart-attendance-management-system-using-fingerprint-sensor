@@ -136,7 +136,7 @@
                                 <div class="form-group row">
                                     <label for="st_acyear" class="col-lg-4 col-form-label text-lg-right">{{ __('Academic Year') }}</label>
                                     <div class="col-lg-6">
-                                        <input id="st_acyear" type="text" class="form-control @error('st_acyear') is-invalid @enderror" name="st_acyear" value="{{ old('st_acyear') }}" placeholder="2010/2011" required autocomplete="st_acyear">
+                                        <input id="st_acyear" type="text" class="form-control @error('st_acyear') is-invalid @enderror" name="st_acyear" value="{{ $year }}" placeholder="2010/2011" required autocomplete="st_acyear">
                                         @error('st_acyear')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
