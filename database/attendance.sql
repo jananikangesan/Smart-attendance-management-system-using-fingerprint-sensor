@@ -3,12 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2021 at 03:34 AM
+-- Generation Time: Jun 17, 2021 at 08:59 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
-
-create database attendance;
-use attendance;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,7 +46,9 @@ CREATE TABLE `attendance_3_g__students` (
 INSERT INTO `attendance_3_g__students` (`id`, `created_at`, `updated_at`, `course_code`, `date`, `hours`, `hall`, `attendance_mark`) VALUES
 (1, '2021-01-08 03:26:10', '2021-01-08 03:26:10', 'CSC304G3', '2021-01-08', 2, 'CUL-1', '[\"2017\\/SP\\/005\",\"2017\\/SP\\/010\",\"2017\\/SP\\/012\",\"2017\\/SP\\/013\",\"2017\\/SP\\/017\"]'),
 (3, '2021-01-08 03:26:56', '2021-01-21 23:48:18', 'CSC304G3', '2021-01-08', 2, 'CUL-1', '[\"2017\\/SP\\/005\",\"2017\\/SP\\/012\",\"2017\\/SP\\/013\",\"2017\\/SP\\/017\"]'),
-(4, '2021-01-08 03:32:19', '2021-01-08 03:40:49', 'CSC304G3', '2021-01-08', 2, 'CUL-1', '[\"2017\\/SP\\/010\",\"2017\\/SP\\/012\",\"2017\\/SP\\/013\",\"2017\\/SP\\/017\"]');
+(4, '2021-01-08 03:32:19', '2021-01-08 03:40:49', 'CSC304G3', '2021-01-08', 2, 'CUL-1', '[\"2017\\/SP\\/010\",\"2017\\/SP\\/012\",\"2017\\/SP\\/013\",\"2017\\/SP\\/017\"]'),
+(5, '2021-05-06 22:55:07', '2021-05-06 22:55:07', 'CSC304G3', '2021-05-07', 1, 'CUL-1', '[\"2017\\/SP\\/005\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\",\"2017\\/SP\\/012\"]'),
+(6, '2021-05-12 02:38:40', '2021-05-12 02:38:40', 'CSC304G3', '2021-05-12', 1, 'CUL-1', '[\"2017\\/SP\\/002\",\"2017\\/SP\\/003\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\",\"2017\\/SP\\/010\",\"2017\\/SP\\/012\",\"2017\\/SP\\/013\",\"2017\\/SP\\/014\",\"2017\\/SP\\/017\"]');
 
 -- --------------------------------------------------------
 
@@ -74,7 +73,8 @@ CREATE TABLE `attendance_3_m__students` (
 
 INSERT INTO `attendance_3_m__students` (`id`, `created_at`, `updated_at`, `course_code`, `date`, `hours`, `hall`, `attendance_mark`) VALUES
 (1, '2021-01-08 23:34:54', '2021-01-22 00:02:34', 'CSC301M3', '2021-01-05', 1, 'CUL-2', '[\"2017\\/SP\\/002\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\"]'),
-(2, '2021-01-16 21:45:55', '2021-01-16 21:45:55', 'CSC301M3', '2021-01-17', 1, 'CUL-2', '[\"2017\\/SP\\/002\",\"2017\\/SP\\/003\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\",\"2017\\/SP\\/014\"]');
+(2, '2021-01-16 21:45:55', '2021-01-16 21:45:55', 'CSC301M3', '2021-01-17', 1, 'CUL-2', '[\"2017\\/SP\\/002\",\"2017\\/SP\\/003\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\",\"2017\\/SP\\/014\"]'),
+(3, '2021-04-11 07:38:22', '2021-04-11 07:38:22', 'CSC303M3', '2021-04-11', 1, 'CUL-1', '[\"2017\\/SP\\/002\",\"2017\\/SP\\/003\",\"2017\\/SP\\/006\",\"2017\\/SP\\/008\",\"2017\\/SP\\/014\"]');
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,17 @@ INSERT INTO `attendance_3_s__students` (`id`, `created_at`, `updated_at`, `cours
 (24, '2021-01-15 21:30:29', '2021-01-15 21:30:29', 'CSC304S3', '2021-01-23', 2, 'CUL-1', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/009\",\"2017\\/CSC\\/011\",\"2017\\/CSC\\/013\"]'),
 (25, '2021-01-16 00:25:15', '2021-01-16 00:25:15', 'CSC304S3', '2021-01-30', 1, 'CUL-1', '[\"2017\\/CSC\\/008\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/020\"]'),
 (26, '2021-01-21 01:11:54', '2021-01-21 01:15:43', 'CSC304S3', '2021-01-21', 2, 'CUL-1', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/007\",\"2017\\/CSC\\/010\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/016\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/020\",\"2017\\/CSC\\/022\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/028\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/034\"]'),
-(27, '2021-01-21 23:39:45', '2021-01-21 23:39:45', 'CSC304S3', '2021-01-22', 1, 'CUL-1', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\"]');
+(27, '2021-01-21 23:39:45', '2021-01-21 23:39:45', 'CSC304S3', '2021-01-22', 1, 'CUL-1', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\"]'),
+(28, '2021-05-05 16:32:23', '2021-05-05 16:32:46', 'CSC309S3', '2021-05-06', 2, 'CUL-1', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/002\",\"2017\\/CSC\\/003\",\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/007\",\"2017\\/CSC\\/008\",\"2017\\/CSC\\/009\",\"2017\\/CSC\\/010\",\"2017\\/CSC\\/011\",\"2017\\/CSC\\/012\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/015\",\"2017\\/CSC\\/016\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/018\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/020\",\"2017\\/CSC\\/021\",\"2017\\/CSC\\/022\",\"2017\\/CSC\\/023\",\"2017\\/CSC\\/024\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/026\",\"2017\\/CSC\\/027\",\"2017\\/CSC\\/028\",\"2017\\/CSC\\/029\",\"2017\\/CSC\\/030\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/034\",\"2017\\/CSC\\/035\",\"2017\\/CSC\\/036\",\"2017\\/CSC\\/037\",\"2017\\/CSC\\/038\",\"2017\\/CSC\\/040\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/044\",\"2017\\/CSC\\/046\",\"2017\\/CSC\\/047\",\"2017\\/CSC\\/048\",\"2017\\/CSC\\/FS\\/\"]'),
+(29, '2021-05-17 23:38:04', '2021-05-17 23:38:04', 'CSC306S3', '2021-01-18', 1, 'CUL-1', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/002\",\"2017\\/CSC\\/003\",\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/007\",\"2017\\/CSC\\/009\",\"2017\\/CSC\\/010\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/016\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/021\",\"2017\\/CSC\\/022\",\"2017\\/CSC\\/023\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/028\",\"2017\\/CSC\\/030\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/034\",\"2017\\/CSC\\/036\",\"2017\\/CSC\\/037\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/045\",\"2017\\/CSC\\/046\",\"2017\\/CSC\\/047\",\"2017\\/CSC\\/048\",\"2017\\/CSC\\/FS\\/\"]'),
+(30, '2021-05-17 23:38:41', '2021-05-17 23:38:41', 'CSC306S3', '2021-02-14', 2, 'CUL-2', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/002\",\"2017\\/CSC\\/003\",\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/012\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/018\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/023\",\"2017\\/CSC\\/024\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/044\",\"2017\\/CSC\\/048\"]'),
+(31, '2021-05-17 23:40:08', '2021-05-17 23:40:08', 'CSC306S3', '2021-03-03', 1, 'LAB-1', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/011\",\"2017\\/CSC\\/012\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/015\",\"2017\\/CSC\\/024\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/026\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/034\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/044\"]'),
+(32, '2021-05-17 23:41:00', '2021-05-17 23:41:00', 'CSC306S3', '2021-04-01', 2, 'CUL-2', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/009\",\"2017\\/CSC\\/010\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/020\",\"2017\\/CSC\\/021\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/027\",\"2017\\/CSC\\/028\",\"2017\\/CSC\\/029\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/034\",\"2017\\/CSC\\/040\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/044\",\"2017\\/CSC\\/046\"]'),
+(33, '2021-05-17 23:41:37', '2021-05-17 23:41:37', 'CSC306S3', '2021-04-18', 2, 'CUL-2', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/015\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/020\",\"2017\\/CSC\\/024\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/035\",\"2017\\/CSC\\/037\",\"2017\\/CSC\\/045\",\"2017\\/CSC\\/048\",\"2017\\/CSC\\/FS\\/\"]'),
+(34, '2021-05-17 23:42:26', '2021-05-17 23:42:26', 'CSC306S3', '2021-05-18', 1, 'CUL-1', '[\"2017\\/CSC\\/004\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/007\",\"2017\\/CSC\\/009\",\"2017\\/CSC\\/010\",\"2017\\/CSC\\/011\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/015\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/018\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/022\",\"2017\\/CSC\\/024\",\"2017\\/CSC\\/026\",\"2017\\/CSC\\/027\",\"2017\\/CSC\\/028\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/033\",\"2017\\/CSC\\/034\",\"2017\\/CSC\\/035\",\"2017\\/CSC\\/040\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/046\",\"2017\\/CSC\\/047\",\"2017\\/CSC\\/048\",\"2017\\/CSC\\/FS\\/\"]'),
+(35, '2021-05-18 03:19:18', '2021-05-18 03:19:18', 'CSC304S3', '2021-05-18', 2, 'CUL-1', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/007\",\"2017\\/CSC\\/012\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/019\",\"2017\\/CSC\\/028\"]'),
+(36, '2021-05-21 01:51:54', '2021-05-21 01:51:54', 'CSC311S3', '2021-05-01', 1, 'CUL-2', '[\"2017\\/CSC\\/001\",\"2017\\/CSC\\/002\",\"2017\\/CSC\\/003\",\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/013\",\"2017\\/CSC\\/017\",\"2017\\/CSC\\/021\",\"2017\\/CSC\\/025\",\"2017\\/CSC\\/030\",\"2017\\/CSC\\/031\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/040\",\"2017\\/CSC\\/043\",\"2017\\/CSC\\/044\"]'),
+(37, '2021-05-21 01:52:30', '2021-05-21 01:52:30', 'CSC311S3', '2021-05-05', 2, 'CUL-1', '[\"2017\\/CSC\\/005\",\"2017\\/CSC\\/006\",\"2017\\/CSC\\/014\",\"2017\\/CSC\\/015\",\"2017\\/CSC\\/016\",\"2017\\/CSC\\/021\",\"2017\\/CSC\\/023\",\"2017\\/CSC\\/032\",\"2017\\/CSC\\/037\",\"2017\\/CSC\\/038\",\"2017\\/CSC\\/040\",\"2017\\/CSC\\/043\"]');
 
 -- --------------------------------------------------------
 
@@ -240,7 +250,7 @@ CREATE TABLE `lecturers` (
 --
 
 INSERT INTO `lecturers` (`lect_id`, `lect_title`, `lect_name`, `lect_email`, `position`, `created_at`, `updated_at`) VALUES
-(1, 'Mr.', ' S. Suthakar', 'sosuthakar@univ.jfn.ac.lk', 'HOD,lecturer', NULL, NULL),
+(1, 'Mr.', 'S. Suthakar', 'sosuthakar@univ.jfn.ac.lk', 'HOD,lecturer', NULL, NULL),
 (2, 'Dr.', 'S. Mahesan', 'mahesans@univ.jfn.ac.lk', 'lecturer', NULL, NULL),
 (3, 'Dr.', 'E. Y. A. Charles', 'charles.ey@univ.jfn.ac.lk', 'lecturer', NULL, NULL),
 (4, 'Dr.', 'K. Thabotharan', 'thabo@univ.jfn.ac.lk', 'lecturer', NULL, NULL),
@@ -251,7 +261,8 @@ INSERT INTO `lecturers` (`lect_id`, `lect_title`, `lect_name`, `lect_email`, `po
 (9, 'Mr.', ' S. Shriparen', 'shriparens@univ.jfn.ac.lk', 'lecturer', NULL, NULL),
 (10, 'Miss.', 'J. Samantha Tharani', 'samantha@univ.jfn.ac.lk', 'lecturer', NULL, NULL),
 (11, 'Mrs.', 'J. Janani', 'janani7@gmail.com', 'assistentlecturer', NULL, NULL),
-(12, 'Mrs.', ' K. Tharmini', 'tharmin7@gmail.com', 'assistentlecturer', NULL, NULL);
+(12, 'Mrs.', ' K. Tharmini', 'tharmin7@gmail.com', 'assistentlecturer', NULL, NULL),
+(13, 'Mrs.', 'JD', 'jd@gmail.com', 'lecturer', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -315,7 +326,7 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 CREATE TABLE `students` (
   `st_id` bigint(20) UNSIGNED NOT NULL,
   `st_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `st_regno` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `st_regno` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `st_level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `st_acyear` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `st_fid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -338,82 +349,83 @@ INSERT INTO `students` (`st_id`, `st_name`, `st_regno`, `st_level`, `st_acyear`,
 (8, 'Janadari E.S.', '2019/SP/003', '1G', '2018/2019', NULL, NULL, NULL),
 (9, 'Jayasekara H.M.S.H.', '2019/SP/004', '1G', '2018/2019', NULL, NULL, NULL),
 (10, 'Jenthan T.', '2019/SP/005', '1G', '2018/2019', NULL, NULL, NULL),
-(11, 'Abishayani L.', '2018/CSC/001', '2S', '2018/2019', NULL, NULL, NULL),
-(12, 'Afra M.A.F.', '2018/CSC/002', '2S', '2018/2019', NULL, NULL, NULL),
-(13, 'Ajanthan R.', '2018/CSC/003', '2S', '2018/2019', NULL, NULL, NULL),
-(14, 'Chainee S.S.', '2018/CSC/004', '2S', '2018/2019', NULL, NULL, NULL),
-(15, 'De Silva T.S.A.T.A.', '2018/CSC/005', '2S', '2018/2019', NULL, NULL, NULL),
-(16, 'Vipooshanan R.', '2018/SP/001', '2G', '2018/2019', NULL, NULL, NULL),
-(17, 'Amarasinghe N.M.A', '2018/SP/002', '2G', '2018/2019', NULL, NULL, NULL),
-(18, 'Chandrasekara H.C.A.R.R.', '2018/SP/003', '2G', '2018/2019', NULL, NULL, NULL),
-(19, 'Dayarathna D.S.P.', '2018/SP/004', '2G', '2018/2019', NULL, NULL, NULL),
-(20, 'Dharmarajah R', '2018/SP/005', '2G', '2018/2019', NULL, NULL, NULL),
-(21, 'Janani Kangesan', '2017/CSC/001', '3S', '2018/2019', NULL, NULL, NULL),
-(22, 'Dissanayaka Mudiyanselage Shalika Harshani Dissanayaka', '2017/CSC/002', '3S', '2018/2019', NULL, NULL, NULL),
-(23, 'Krishnamoorthy Thanushan', '2017/CSC/003', '3S', '2018/2019', NULL, NULL, NULL),
-(24, 'Supasthika Amirthalingam', '2017/CSC/004', '3S', '2018/2019', NULL, NULL, NULL),
-(25, 'Srikaran Jatheesan', '2017/CSC/005', '3S', '2018/2019', NULL, NULL, NULL),
-(26, 'Divya Varatharajan', '2017/CSC/006', '3S', '2018/2019', NULL, NULL, NULL),
-(27, 'Samarasinghage Kavindya Sathsarani', '2017/CSC/007', '3S', '2018/2019', NULL, NULL, NULL),
-(28, 'Sinthuja Arumainayagam', '2017/CSC/008', '3S', '2018/2019', NULL, NULL, NULL),
-(29, 'Rathnayakage Amila Saranga Rathnayaka', '2017/CSC/009', '3S', '2018/2019', NULL, NULL, NULL),
-(30, 'Abdul Gaffar Mohamed Fawzy', '2017/CSC/010', '3S', '2018/2019', NULL, NULL, NULL),
-(31, 'Yaleen Mohamed Silhan', '2017/CSC/011', '3S', '2018/2019', NULL, NULL, NULL),
-(32, 'Niranga Sithara Athauda Arachchi', '2017/CSC/012', '3S', '2018/2019', NULL, NULL, NULL),
-(33, 'hanganna Gamage Tharindu Prasad Ranaweera', '2017/CSC/013', '3S', '2018/2019', NULL, NULL, NULL),
-(34, 'Samarakoon Jayasekara Mudiyanselage Imila Maheshan Bandara Samarakoon', '2017/CSC/014', '3S', '2018/2019', NULL, NULL, NULL),
-(35, 'Musthafa Lebbe Mohamed Sanoos', '2017/CSC/015', '3S', '2018/2019', NULL, NULL, NULL),
-(36, 'Aluthgamaralalage Isuru Lakmal', '2017/CSC/016', '3S', '2018/2019', NULL, NULL, NULL),
-(37, 'Mohommadhu Abdhul Rahoof Rifath Muhammadh', '2017/CSC/017', '3S', '2018/2019', NULL, NULL, NULL),
-(38, 'Elackshana Manivannan', '2017/CSC/018', '3S', '2018/2019', NULL, NULL, NULL),
-(39, 'Mohammed Hilmy Mohammed Himaz', '2017/CSC/019', '3S', '2018/2019', NULL, NULL, NULL),
-(40, 'Mohamed Ismail Ahamed Aneeque', '2017/CSC/020', '3S', '2018/2019', NULL, NULL, NULL),
-(41, 'Mohommadhu Hanifa Mohommadhu Hisham', '2017/CSC/021', '3S', '2018/2019', NULL, NULL, NULL),
-(42, 'Dilki Hasara Wickramasinghe', '2017/CSC/022', '3S', '2018/2019', NULL, NULL, NULL),
-(43, 'Mathusha Mathiyalagan', '2017/CSC/023', '3S', '2018/2019', NULL, NULL, NULL),
-(44, 'Mapa Mudiyanselage Madhawa Heshan Thilakarathne', '2017/CSC/024', '3S', '2018/2019', NULL, NULL, NULL),
-(45, 'Pahala Bathjala Walavve Lahiru Madusanka', '2017/CSC/025', '3S', '2018/2019', NULL, NULL, NULL),
-(46, 'Wijesundara lekamlage Chamika Sandaruwan Wijesundara', '2017/CSC/026', '3S', '2018/2019', NULL, NULL, NULL),
-(47, 'Panadura Acharige Wijesundara Gunathilaka Ramesh Perera', '2017/CSC/027', '3S', '2018/2019', NULL, NULL, NULL),
-(48, 'Dissanayaka Mudiyanselage Sudula Kumara Dissanayaka', '2017/CSC/028', '3S', '2018/2019', NULL, NULL, NULL),
-(49, 'Uthumalebbe Mohamed Afrid', '2017/CSC/029', '3S', '2018/2019', NULL, NULL, NULL),
-(50, 'Kishani Kandasamy', '2017/CSC/030', '3S', '2018/2019', NULL, NULL, NULL),
-(51, 'Lansakara Herath Mudiyanselage Bisak Sampath Bandara', '2017/CSC/031', '3S', '2018/2019', NULL, NULL, NULL),
-(52, 'Prathaban Kavin', '2017/CSC/032', '3S', '2018/2019', NULL, NULL, NULL),
-(53, 'Pushpakantha Ajanthasiri Gamage', '2017/CSC/033', '3S', '2018/2019', NULL, NULL, NULL),
-(54, 'Vetharsana Thangarajah', '2017/CSC/034', '3S', '2018/2019', NULL, NULL, NULL),
-(55, 'Hewa Puwakdandawage Isuru Madushan', '2017/CSC/035', '3S', '2018/2019', NULL, NULL, NULL),
-(56, 'Ekanayake Mudiyanselage Charith Gihan Ekanayake', '2017/CSC/036', '3S', '2018/2019', NULL, NULL, NULL),
-(57, 'Panojah Nadarasa', '2017/CSC/037', '3S', '2018/2019', NULL, NULL, NULL),
-(58, 'Meiyalagan Yathushanan', '2017/CSC/038', '3S', '2018/2019', NULL, NULL, NULL),
-(59, 'Karthikesu Kogul', '2017/CSC/040', '3S', '2018/2019', NULL, NULL, NULL),
-(60, 'Selvakumar Ranjithamalar', '2017/CSC/043', '3S', '2018/2019', NULL, NULL, NULL),
-(61, 'mallawa Arachchige Heshan Nayanajith mallawarachchi', '2017/CSC/044', '3S', '2018/2019', NULL, NULL, NULL),
-(62, 'Zahir Mohamed Ardil', '2017/CSC/045', '3S', '2018/2019', NULL, NULL, NULL),
-(63, 'Sethukavalan Lokavanilavan', '2017/CSC/046', '3S', '2018/2019', NULL, NULL, NULL),
-(64, 'Rathnayaka Mudiyanselage Lukshan kavinda', '2017/CSC/047', '3S', '2018/2019', NULL, NULL, NULL),
-(65, 'Herath Mudiyanselage Cathuranga Sanjeewa rathnayake', '2017/CSC/048', '3S', '2018/2019', NULL, NULL, NULL),
-(66, 'Nawab Yousufi', '2017/CSC/FS/049', '3S', '2018/2019', NULL, NULL, NULL),
-(67, 'Sithamparanadesan Kumareasan', '2017/SP/005', '3G', '2018/2019', NULL, NULL, NULL),
-(68, 'Sathiyaseelan Kosika', '2017/SP/010', '3G', '2018/2019', NULL, NULL, NULL),
-(69, 'Mageswaran Janarthanan', '2017/SP/012', '3G', '2018/2019', NULL, NULL, NULL),
-(70, 'Thuvaraka Thiraviyarasa', '2017/SP/013', '3G', '2018/2019', NULL, NULL, NULL),
-(71, 'Nanthakumar Pakirathan', '2017/SP/017', '3G', '2018/2019', NULL, NULL, NULL),
-(72, 'Vishnuga Sivakumaran', '2017/SP/002', '3M', '2018/2019', NULL, NULL, NULL),
-(73, 'Thirisika Pragalathanan', '2017/SP/003', '3M', '2018/2019', NULL, NULL, NULL),
-(74, 'Nishani Poovalingam', '2017/SP/006', '3M', '2018/2019', NULL, NULL, NULL),
-(75, 'Nagaraja Senthuran', '2017/SP/008', '3M', '2018/2019', NULL, NULL, NULL),
-(76, 'Mithusa Thillaivasan', '2017/SP/014', '3M', '2018/2019', NULL, NULL, NULL),
-(77, 'Samsudeen Munawwar Ahamed', '2016/CSC/001', '4S', '2018/2019', NULL, NULL, NULL),
-(78, 'Mohamed Ahamed Arham', '2016/CSC/002', '4S', '2018/2019', NULL, NULL, NULL),
-(79, 'A.A.S.N.Athauda', '2016/CSC/003', '4S', '2018/2019', NULL, NULL, NULL),
-(80, 'S.A.Samila Chanuka', '2016/CSC/004', '4S', '2018/2019', NULL, NULL, NULL),
-(81, 'R.H.S.L.Dilshan', '2016/CSC/005', '4S', '2018/2019', NULL, NULL, NULL),
-(82, 'Ketheeswaran Abiram', '2016/SP/002', '4M', '2018/2019', NULL, NULL, NULL),
-(83, 'Kesavi Kanesalingam', '2016/SP/051', '4M', '2018/2019', NULL, NULL, NULL),
-(84, 'Sivananthan Marujan', '2016/SP/072', '4M', '2018/2019', NULL, NULL, NULL),
-(85, 'Lavanya Ratnabala', '2016/SP/102', '4M', '2018/2019', NULL, NULL, NULL),
-(86, 'Luxana Sivakumaran', '2016/SP/116', '4M', '2018/2019', NULL, NULL, NULL);
+(11, 'Abishayani L.', '2018/CSC/001', '2S', '2017/2018', NULL, NULL, NULL),
+(12, 'Afra M.A.F.', '2018/CSC/002', '2S', '2017/2018', NULL, NULL, NULL),
+(13, 'Ajanthan R.', '2018/CSC/003', '2S', '2017/2018', NULL, NULL, NULL),
+(14, 'Chainee S.S.', '2018/CSC/004', '2S', '2017/2018', NULL, NULL, NULL),
+(15, 'De Silva T.S.A.T.A.', '2018/CSC/005', '2S', '2017/2018', NULL, NULL, NULL),
+(16, 'Vipooshanan R.', '2018/SP/001', '2G', '2017/2018', NULL, NULL, NULL),
+(17, 'Amarasinghe N.M.A', '2018/SP/002', '2G', '2017/2018', NULL, NULL, NULL),
+(18, 'Chandrasekara H.C.A.R.R.', '2018/SP/003', '2G', '2017/2018', NULL, NULL, NULL),
+(19, 'Dayarathna D.S.P.', '2018/SP/004', '2G', '2017/2018', NULL, NULL, NULL),
+(20, 'Dharmarajah R', '2018/SP/005', '2G', '2017/2018', NULL, NULL, NULL),
+(21, 'Janani Kangesan', '2017/CSC/001', '3S', '2016/2017', NULL, NULL, NULL),
+(22, 'Dissanayaka Mudiyanselage Shalika Harshani Dissanayaka', '2017/CSC/002', '3S', '2016/2017', NULL, NULL, NULL),
+(23, 'Krishnamoorthy Thanushan', '2017/CSC/003', '3S', '2016/2017', NULL, NULL, NULL),
+(24, 'Supasthika Amirthalingam', '2017/CSC/004', '3S', '2016/2017', NULL, NULL, NULL),
+(25, 'Srikaran Jatheesan', '2017/CSC/005', '3S', '2016/2017', NULL, NULL, NULL),
+(26, 'Divya Varatharajan', '2017/CSC/006', '3S', '2016/2017', NULL, NULL, NULL),
+(27, 'Samarasinghage Kavindya Sathsarani', '2017/CSC/007', '3S', '2016/2017', NULL, NULL, NULL),
+(28, 'Sinthuja Arumainayagam', '2017/CSC/008', '3S', '2016/2017', NULL, NULL, NULL),
+(29, 'Rathnayakage Amila Saranga Rathnayaka', '2017/CSC/009', '3S', '2016/2017', NULL, NULL, NULL),
+(30, 'Abdul Gaffar Mohamed Fawzy', '2017/CSC/010', '3S', '2016/2017', NULL, NULL, NULL),
+(31, 'Yaleen Mohamed Silhan', '2017/CSC/011', '3S', '2016/2017', NULL, NULL, NULL),
+(32, 'Niranga Sithara Athauda Arachchi', '2017/CSC/012', '3S', '2016/2017', NULL, NULL, NULL),
+(33, 'hanganna Gamage Tharindu Prasad Ranaweera', '2017/CSC/013', '3S', '2016/2017', NULL, NULL, NULL),
+(34, 'Samarakoon Jayasekara Mudiyanselage Imila Maheshan Bandara Samarakoon', '2017/CSC/014', '3S', '2016/2017', NULL, NULL, NULL),
+(35, 'Musthafa Lebbe Mohamed Sanoos', '2017/CSC/015', '3S', '2016/2017', NULL, NULL, NULL),
+(36, 'Aluthgamaralalage Isuru Lakmal', '2017/CSC/016', '3S', '2016/2017', NULL, NULL, NULL),
+(37, 'Mohommadhu Abdhul Rahoof Rifath Muhammadh', '2017/CSC/017', '3S', '2016/2017', NULL, NULL, NULL),
+(38, 'Elackshana Manivannan', '2017/CSC/018', '3S', '2016/2017', NULL, NULL, NULL),
+(39, 'Mohammed Hilmy Mohammed Himaz', '2017/CSC/019', '3S', '2016/2017', NULL, NULL, NULL),
+(40, 'Mohamed Ismail Ahamed Aneeque', '2017/CSC/020', '3S', '2016/2017', NULL, NULL, NULL),
+(41, 'Mohommadhu Hanifa Mohommadhu Hisham', '2017/CSC/021', '3S', '2016/2017', NULL, NULL, NULL),
+(42, 'Dilki Hasara Wickramasinghe', '2017/CSC/022', '3S', '2016/2017', NULL, NULL, NULL),
+(43, 'Mathusha Mathiyalagan', '2017/CSC/023', '3S', '2016/2017', NULL, NULL, NULL),
+(44, 'Mapa Mudiyanselage Madhawa Heshan Thilakarathne', '2017/CSC/024', '3S', '2016/2017', NULL, NULL, NULL),
+(45, 'Pahala Bathjala Walavve Lahiru Madusanka', '2017/CSC/025', '3S', '2016/2017', NULL, NULL, NULL),
+(46, 'Wijesundara lekamlage Chamika Sandaruwan Wijesundara', '2017/CSC/026', '3S', '2016/2017', NULL, NULL, NULL),
+(47, 'Panadura Acharige Wijesundara Gunathilaka Ramesh Perera', '2017/CSC/027', '3S', '2016/2017', NULL, NULL, NULL),
+(48, 'Dissanayaka Mudiyanselage Sudula Kumara Dissanayaka', '2017/CSC/028', '3S', '2016/2017', NULL, NULL, NULL),
+(49, 'Uthumalebbe Mohamed Afrid', '2017/CSC/029', '3S', '2016/2017', NULL, NULL, NULL),
+(50, 'Kishani Kandasamy', '2017/CSC/030', '3S', '2016/2017', NULL, NULL, NULL),
+(51, 'Lansakara Herath Mudiyanselage Bisak Sampath Bandara', '2017/CSC/031', '3S', '2016/2017', NULL, NULL, NULL),
+(52, 'Prathaban Kavin', '2017/CSC/032', '3S', '2016/2017', NULL, NULL, NULL),
+(53, 'Pushpakantha Ajanthasiri Gamage', '2017/CSC/033', '3S', '2016/2017', NULL, NULL, NULL),
+(54, 'Vetharsana Thangarajah', '2017/CSC/034', '3S', '2016/2017', NULL, NULL, NULL),
+(55, 'Hewa Puwakdandawage Isuru Madushan', '2017/CSC/035', '3S', '2016/2017', NULL, NULL, NULL),
+(56, 'Ekanayake Mudiyanselage Charith Gihan Ekanayake', '2017/CSC/036', '3S', '2016/2017', NULL, NULL, NULL),
+(57, 'Panojah Nadarasa', '2017/CSC/037', '3S', '2016/2017', NULL, NULL, NULL),
+(58, 'Meiyalagan Yathushanan', '2017/CSC/038', '3S', '2016/2017', NULL, NULL, NULL),
+(59, 'Karthikesu Kogul', '2017/CSC/040', '3S', '2016/2017', NULL, NULL, NULL),
+(60, 'Selvakumar Ranjithamalar', '2017/CSC/043', '3S', '2016/2017', NULL, NULL, NULL),
+(61, 'mallawa Arachchige Heshan Nayanajith mallawarachchi', '2017/CSC/044', '3S', '2016/2017', NULL, NULL, NULL),
+(62, 'Zahir Mohamed Ardil', '2017/CSC/045', '3S', '2016/2017', NULL, NULL, NULL),
+(63, 'Sethukavalan Lokavanilavan', '2017/CSC/046', '3S', '2016/2017', NULL, NULL, NULL),
+(64, 'Rathnayaka Mudiyanselage Lukshan kavinda', '2017/CSC/047', '3S', '2016/2017', NULL, NULL, NULL),
+(65, 'Herath Mudiyanselage Cathuranga Sanjeewa rathnayake', '2017/CSC/048', '3S', '2016/2017', NULL, NULL, NULL),
+(66, 'Nawab Yousufi', '2017/CSC/FS/', '3S', '2016/2017', NULL, NULL, NULL),
+(67, 'Sithamparanadesan Kumareasan', '2017/SP/005', '3G', '2016/2017', NULL, NULL, NULL),
+(68, 'Sathiyaseelan Kosika', '2017/SP/010', '3G', '2016/2017', NULL, NULL, NULL),
+(69, 'Mageswaran Janarthanan', '2017/SP/012', '3G', '2016/2017', NULL, NULL, NULL),
+(70, 'Thuvaraka Thiraviyarasa', '2017/SP/013', '3G', '2016/2017', NULL, NULL, NULL),
+(71, 'Nanthakumar Pakirathan', '2017/SP/017', '3G', '2016/2017', NULL, NULL, NULL),
+(72, 'Vishnuga Sivakumaran', '2017/SP/002', '3M', '2016/2017', NULL, NULL, NULL),
+(73, 'Thirisika Pragalathanan', '2017/SP/003', '3M', '2016/2017', NULL, NULL, NULL),
+(74, 'Nishani Poovalingam', '2017/SP/006', '3M', '2016/2017', NULL, NULL, NULL),
+(75, 'Nagaraja Senthuran', '2017/SP/008', '3M', '2016/2017', NULL, NULL, NULL),
+(76, 'Mithusa Thillaivasan', '2017/SP/014', '3M', '2016/2017', NULL, NULL, NULL),
+(77, 'Samsudeen Munawwar Ahamed', '2016/CSC/001', '4S', '2015/2016', NULL, NULL, NULL),
+(78, 'Mohamed Ahamed Arham', '2016/CSC/002', '4S', '2015/2016', NULL, NULL, NULL),
+(79, 'A.A.S.N.Athauda', '2016/CSC/003', '4S', '2015/2016', NULL, NULL, NULL),
+(80, 'S.A.Samila Chanuka', '2016/CSC/004', '4S', '2015/2016', NULL, NULL, NULL),
+(81, 'R.H.S.L.Dilshan', '2016/CSC/005', '4S', '2015/2016', NULL, NULL, NULL),
+(82, 'Ketheeswaran Abiram', '2016/SP/002', '4M', '2015/2016', NULL, NULL, NULL),
+(83, 'Kesavi Kanesalingam', '2016/SP/051', '4M', '2015/2016', NULL, NULL, NULL),
+(84, 'Sivananthan Marujan', '2016/SP/072', '4M', '2015/2016', NULL, NULL, NULL),
+(85, 'Lavanya Ratnabala', '2016/SP/102', '4M', '2015/2016', NULL, NULL, NULL),
+(86, 'Luxana Sivakumaran', '2016/SP/116', '4M', '2015/2016', NULL, NULL, NULL),
+(87, 'santhirakumar gajan', '2018/CSC/050', '2S', '2018/2019', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -439,10 +451,14 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `role`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$bLD9v4Llf9NG07IHvbOlwus1HnEcSFVSoBSC3rIPno8OQniaaNwJ2', NULL, '2020-12-18 04:19:43', '2020-12-18 04:19:43'),
-(2, 'User', 'user@gmail.com', NULL, 0, '$2y$10$vVjdN6fyhhOevIhw1SPVzeEFr0t3z2C1JYr0yklYIPOqckA15UDFK', NULL, '2020-12-18 04:19:43', '2020-12-18 04:19:43'),
+(2, 'User', 'user@gmail.com', NULL, 0, '$2y$10$hGcySlHLkGM.sPxyEhDv/uDNGPiSYVvRl1LXGubtKd/Adcy9OPWc.', NULL, '2020-12-18 04:19:43', '2021-06-15 21:56:13'),
 (3, 'Jatheesan', 'srijathee@gmail.com', NULL, 0, '$2y$10$0jGCnCjrdZ5UmROsJDhle.cqvBtLr0RhsMnXFE19Qv3iRo.0WNoqK', NULL, '2021-01-12 06:21:52', '2021-01-12 06:21:52'),
 (4, 'Jatheesan', 'srijathees@gmail.com', NULL, 0, '$2y$10$pfJJkFDam6dQ7Knp0nVFWu.SPVI602Gwl0JWY0GLxUGqttp7hofKm', NULL, '2021-01-12 06:24:47', '2021-01-12 06:24:47'),
-(5, 'ramanan', 'a.ramanan@univ.jfn.ac.lk', NULL, 0, '$2y$10$a6yZtqTxoY4skmKuVDy1I.cb5dyg33FLbuJnBzWEj2lHVbJdXUybq', NULL, '2021-01-18 00:10:30', '2021-01-20 08:16:03');
+(5, 'ramanan', 'a.ramanan@univ.jfn.ac.lk', NULL, 0, '$2y$10$onkUdh/6iGpT.169jrFYT.jIOhxSbluv1ZfFVwMgTNRx51eqxAhwC', NULL, '2021-01-18 00:10:30', '2021-06-15 22:05:47'),
+(6, 'Mahesan', 'mahesans@univ.jfn.ac.lk', NULL, 0, '$2y$10$jxREUqCe3JVODYk9XEEqlOBa5HIl3cGYKLfQgpxoTNdwLWm2iyYpi', NULL, '2021-05-21 22:44:02', '2021-05-21 22:44:02'),
+(7, 'jd', 'jd@gmail.com', NULL, 0, '$2y$10$iQNZUJwVUHPoBTPtlPrMzehrcdf1pAZQBy0EY2IEIgbk/JNlCQg22', NULL, '2021-06-15 23:50:13', '2021-06-15 23:50:13'),
+(8, 'jt', 'jt@gmail.com', NULL, 1, '$2y$10$FElJKqNGu6nyE1E2Aw7qzO1GXvej9T6XNzq2EyX5FkqOxhKxdcjmS', NULL, '2021-06-16 00:37:58', '2021-06-16 00:37:58'),
+(9, 'suthakar', 'sosuthakar@univ.jfn.ac.lk', NULL, 2, '$2y$10$TL7h90iNHKEYsc5wk1TlduMZypECmaRMR2kxYcx4uEs/fEQUqf9oS', NULL, '2021-06-16 00:59:40', '2021-06-16 00:59:40');
 
 -- --------------------------------------------------------
 
@@ -453,7 +469,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `role`, `passwo
 CREATE TABLE `variables` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `value` int(11) DEFAULT NULL
+  `value` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -461,7 +477,8 @@ CREATE TABLE `variables` (
 --
 
 INSERT INTO `variables` (`id`, `name`, `value`) VALUES
-(1, 'semester', 2);
+(1, 'semester', '2'),
+(2, 'academic-year', '2018/2019');
 
 --
 -- Indexes for dumped tables
@@ -545,19 +562,19 @@ ALTER TABLE `variables`
 -- AUTO_INCREMENT for table `attendance_3_g__students`
 --
 ALTER TABLE `attendance_3_g__students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `attendance_3_m__students`
 --
 ALTER TABLE `attendance_3_m__students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `attendance_3_s__students`
 --
 ALTER TABLE `attendance_3_s__students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -575,7 +592,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `lecturers`
 --
 ALTER TABLE `lecturers`
-  MODIFY `lect_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `lect_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -587,19 +604,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `st_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `st_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `variables`
 --
 ALTER TABLE `variables`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
