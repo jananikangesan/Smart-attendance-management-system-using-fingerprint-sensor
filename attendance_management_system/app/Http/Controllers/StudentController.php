@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class StudentController extends Controller
 {
     //
@@ -31,6 +31,13 @@ class StudentController extends Controller
             $students = Student::paginate(10);
         }
         return View('students.studentindex', compact('students'));
+    }
+
+    public function create()
+    {
+        $year = DB::table('variables')->where('name', 'academic-year')->value('value');
+
+        return view('students.studentregister', compact('year'));
     }
 
     /**

@@ -10,8 +10,8 @@ class SemesterController extends Controller
     public function index()
     {
         $semester = DB::table('variables')->where('name', 'semester')->value('value');
-
-        return view('semester', compact('semester'));
+        $year = DB::table('variables')->where('name', 'academic-year')->value('value');
+        return view('semester', compact('semester', 'year'));
         //dd($semester);
     }
 
@@ -19,6 +19,13 @@ class SemesterController extends Controller
     {
         $seme = $request->get('semester');
         DB::table('variables')->where('name', 'semester')->update(['value' => $seme]);
+        return redirect()->back();
+    }
+
+    public function yearupdate(Request $request)
+    {
+        $year = $request->get('academic-year');
+        DB::table('variables')->where('name', 'academic-year')->update(['value' => $year]);
         return redirect()->back();
     }
 

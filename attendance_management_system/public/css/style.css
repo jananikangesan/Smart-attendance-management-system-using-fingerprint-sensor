@@ -1617,16 +1617,30 @@
 /*-------------------------------------------------*/
 /* =  8.SLIDER
 /*-------------------------------------------------*/
- .slider-arr{
+ .slider-arr-l{
      color: #fff;
      position: absolute;
      font-size: 18px;
      top: 50%;
+     left:20%;
      width: 50px;
      height: 50px;
      background: #000000;
      padding: 17px;
      border-radius: 50px;
+}
+
+.slider-arr-r{
+    color: #fff;
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    right:20%;
+    width: 50px;
+    height: 50px;
+    background: #000000;
+    padding: 17px;
+    border-radius: 50px;
 }
  .slider-con{
 }
@@ -3305,6 +3319,7 @@ left: 0;
      width: 33.333%;
      padding: 25px;
      box-sizing: border-box;
+     height: 320px;
     /* padding: 15px 0px;
      */
     /* height: 210px;

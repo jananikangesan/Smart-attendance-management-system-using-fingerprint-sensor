@@ -39,7 +39,6 @@
                             <th>Student Registration</th>
                             <th>Student Level</th>
                             <th>academic year</th>
-                            <th>Fingerprint ID</th>
                              <th colspan=2>Actions</th>
                         </tr>
                     </thead>
@@ -51,7 +50,6 @@
                             <td>{{ $student->st_regno }}</td>
                             <td>{{ $student->st_level }}</td>
                             <td>{{ $student->st_acyear }}</td>
-                            <td>{{ $student->st_fid }}</td>
                             <td>
                                 <a href="{{ route('student_edit', ['id' => $student->st_id]) }}" class="btn btn-primary">Edit</a>
                             </td>

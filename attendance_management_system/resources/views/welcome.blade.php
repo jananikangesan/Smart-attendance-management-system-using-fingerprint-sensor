@@ -24,44 +24,78 @@
 
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <i class="fa fa-chevron-left slider-arr"></i>
+                <i class="fa fa-chevron-left slider-arr-l"></i>
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <i class="fa fa-chevron-right slider-arr"></i>
+                <i class="fa fa-chevron-right slider-arr-r"></i>
             </a>
         </div>
     </section>
 
-    {{--<!-- QUICK LINKS -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="wed-hom-ser">
-                    <ul>
-                        <li>
-                            <a href="awards.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img src="images/icon/h-ic1.png" alt=""> Academy</a>
-                        </li>
-                        <li>
-                            <a href="admission.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img src="images/icon/h-ic2.png" alt=""> Admission</a>
-                        </li>
-                        <li>
-                            <a href="all-courses.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img src="images/icon/h-ic4.png" alt=""> Courses</a>
-                        </li>
-                        <li>
-                            <a href="seminar.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img src="images/icon/h-ic3.png" alt=""> Seminar</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>--}}
-
-    <!-- COPY RIGHTS -->
     <section class="wed-rights">
         <div class="container">
             <div class="row" style="height:25px">
             </div>
         </div>
     </section>
+
+    <!--SECTION START-->
+    <section>
+        <div class="container com-sp pad-bot-70">
+            <div class="row">
+                <div class="cor about-sp">
+                    <div class="ed-about-tit">
+                        <div class="con-title">
+                            <h2>About <span> System</span></h2>
+                            <p>Smart attendance management system that is mark attendance of students by using finger print sensor and keeps the information such as attendance of students’ level wise with course wise, students’ details, lecturers’ details and course details.</p>
+                        </div>
+                    </div>
+                    <div class="ed-about-sec1">
+                        <div class="ed-advan">
+                            <ul>
+                                <li>
+                                    <div class="ed-ad-img">
+                                        <img src="images/adv/1.png" alt="">
+                                    </div>
+                                    <div class="ed-ad-dec">
+                                        <h4>FingerPrint</h4>
+                                        <p>Fingerprint attendance System aims to efficient the attendance taking procedure of an Universities using biometric technology.
+                                           The finger print attendance taking procedure is extremely efficient compared to the traditional sign sheet procedures.
+                                           It reduse the fault signature</p>
+                                        <a href="#">Read more</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ed-ad-img">
+                                        <img src="images/adv/2.png" alt="">
+                                    </div>
+                                    <div class="ed-ad-dec">
+                                        <h4>System</h4>
+                                        <p>Smart attendance System is a desktop-based application. It developed to obtain the attendance of student and stone and maintain the attendances</p>
+                                        <a href="#">Read more</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ed-ad-img">
+                                        <img src="images/adv/3.png" alt="">
+                                    </div>
+                                    <div class="ed-ad-dec">
+                                        <h4>Departments</h4>
+                                        <p>Each departments have each attendance system. Department administrator maintain the system.</p>
+                                        <a href="#">Read more</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ed-about-sec1">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--SECTION END-->
 
 @endsection
