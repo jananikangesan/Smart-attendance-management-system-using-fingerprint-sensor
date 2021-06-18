@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2021 at 08:59 AM
+-- Generation Time: Jun 17, 2021 at 03:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -452,13 +452,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `role`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$bLD9v4Llf9NG07IHvbOlwus1HnEcSFVSoBSC3rIPno8OQniaaNwJ2', NULL, '2020-12-18 04:19:43', '2020-12-18 04:19:43'),
 (2, 'User', 'user@gmail.com', NULL, 0, '$2y$10$hGcySlHLkGM.sPxyEhDv/uDNGPiSYVvRl1LXGubtKd/Adcy9OPWc.', NULL, '2020-12-18 04:19:43', '2021-06-15 21:56:13'),
-(3, 'Jatheesan', 'srijathee@gmail.com', NULL, 0, '$2y$10$0jGCnCjrdZ5UmROsJDhle.cqvBtLr0RhsMnXFE19Qv3iRo.0WNoqK', NULL, '2021-01-12 06:21:52', '2021-01-12 06:21:52'),
-(4, 'Jatheesan', 'srijathees@gmail.com', NULL, 0, '$2y$10$pfJJkFDam6dQ7Knp0nVFWu.SPVI602Gwl0JWY0GLxUGqttp7hofKm', NULL, '2021-01-12 06:24:47', '2021-01-12 06:24:47'),
-(5, 'ramanan', 'a.ramanan@univ.jfn.ac.lk', NULL, 0, '$2y$10$onkUdh/6iGpT.169jrFYT.jIOhxSbluv1ZfFVwMgTNRx51eqxAhwC', NULL, '2021-01-18 00:10:30', '2021-06-15 22:05:47'),
-(6, 'Mahesan', 'mahesans@univ.jfn.ac.lk', NULL, 0, '$2y$10$jxREUqCe3JVODYk9XEEqlOBa5HIl3cGYKLfQgpxoTNdwLWm2iyYpi', NULL, '2021-05-21 22:44:02', '2021-05-21 22:44:02'),
 (7, 'jd', 'jd@gmail.com', NULL, 0, '$2y$10$iQNZUJwVUHPoBTPtlPrMzehrcdf1pAZQBy0EY2IEIgbk/JNlCQg22', NULL, '2021-06-15 23:50:13', '2021-06-15 23:50:13'),
 (8, 'jt', 'jt@gmail.com', NULL, 1, '$2y$10$FElJKqNGu6nyE1E2Aw7qzO1GXvej9T6XNzq2EyX5FkqOxhKxdcjmS', NULL, '2021-06-16 00:37:58', '2021-06-16 00:37:58'),
-(9, 'suthakar', 'sosuthakar@univ.jfn.ac.lk', NULL, 2, '$2y$10$TL7h90iNHKEYsc5wk1TlduMZypECmaRMR2kxYcx4uEs/fEQUqf9oS', NULL, '2021-06-16 00:59:40', '2021-06-16 00:59:40');
+(9, 'suthakar', 'sosuthakar@univ.jfn.ac.lk', NULL, 2, '$2y$10$TL7h90iNHKEYsc5wk1TlduMZypECmaRMR2kxYcx4uEs/fEQUqf9oS', NULL, '2021-06-16 00:59:40', '2021-06-16 00:59:40'),
+(10, 'Mahesan', 'mahesans@univ.jfn.ac.lk', NULL, 0, '$2y$10$A3OX.3EhZ1zMKJ3E1LvwO.TiGER19IilYsvXSxGtiIJ0kyUz4g4lu', NULL, '2021-06-17 01:58:17', '2021-06-17 02:00:36');
 
 -- --------------------------------------------------------
 
@@ -610,7 +607,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `variables`
