@@ -60,8 +60,8 @@ class StudentController extends Controller
         'st_name' => $request->get('st_name'),
         'st_regno' => $request->get('st_regno'),
         'st_level' => $request->get('st_level'),
-        'st_acyear' => $request->get('st_acyear'),
-        'st_fid' => $request->get('st_fid')
+        'st_acyear' => $request->get('st_acyear')
+        //'st_fid' => $request->get('st_fid')
          ]);
             
          $student->save();
@@ -104,7 +104,7 @@ class StudentController extends Controller
         $student -> st_regno = $request->get('st_regno');
         $student  -> st_level = $request->get('st_level');
         $student  -> st_acyear = $request->get('st_acyear');
-        $student -> st_fid = $request->get('st_fid');
+        //$student -> st_fid = $request->get('st_fid');
        
 
         $student -> save();

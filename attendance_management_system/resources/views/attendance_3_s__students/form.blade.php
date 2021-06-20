@@ -14,7 +14,7 @@
 
             @foreach($course3s as $c3s)
             {{-- <option value="{{$c3s -> course_code}}">{{$c3s-> course_code}}</option> --}}
-            <option value="{{$c3s -> course_code}}" {{old('course_code', optional($attendance3SStudent)->course_code) == $c3s -> course_code ? 'selected':''}}>{{$c3s-> course_code}}</option>
+            <option value="{{$c3s -> course_code}}" {{old('course_code', optional($attendance3SStudent)->course_code) == $c3s -> course_code ? 'selected':''}}>{{$c3s-> course_code}}{{" - "}}{{$c3s -> course_name}}</option>
             @endforeach
         </select>
 

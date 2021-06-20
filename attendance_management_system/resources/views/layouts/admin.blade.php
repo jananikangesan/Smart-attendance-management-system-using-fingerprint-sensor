@@ -53,8 +53,6 @@
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                <!-- Search-->
-                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="fa fa-search"></i></a></li>
                 <!-- Logout    -->
                 <li class="nav-item">
                   <a href="{{ route('logout') }}" class="nav-link logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

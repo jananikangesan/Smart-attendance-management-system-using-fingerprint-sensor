@@ -26,6 +26,9 @@ class SemesterController extends Controller
     {
         $year = $request->get('academic-year');
         DB::table('variables')->where('name', 'academic-year')->update(['value' => $year]);
+
+        Student::query()->update(['st_acyear' => $year]);
+
         return redirect()->back();
     }
 

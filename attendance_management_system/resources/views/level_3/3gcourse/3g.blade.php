@@ -2,6 +2,12 @@
 @section('pagetitle', 'Attandance/level3/3G/'.$course)
 @section('levelcontent')
         @if($g3_coursecount == 0)
+        <div class="btn-group btn-group-sm pull-right" role="group">
+            <a href="{{ route('attendance_3_g__students.attendance_3_g__student.create') }}" class="btn btn-success"
+                title="Create New Attendance 3 G  Student">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+            </a>
+        </div>
         <div class="panel-body text-center">
             <hr />
             <h4>{{$course}} Attendance is not available.</h4>

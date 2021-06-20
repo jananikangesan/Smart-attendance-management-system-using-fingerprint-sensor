@@ -10,7 +10,7 @@
 
             @foreach($course3g as $c3g)
            
-            <option value="{{$c3g -> course_code}}" {{old('course_code', optional($attendance3GStudent)->course_code) == $c3g -> course_code ? 'selected':''}}>{{$c3g-> course_code}}</option>
+            <option value="{{$c3g -> course_code}}" {{old('course_code', optional($attendance3GStudent)->course_code) == $c3g -> course_code ? 'selected':''}}>{{$c3g-> course_code}}{{" - "}}{{$c3g -> course_name}}</option>
             @endforeach
         </select>
     </div>
