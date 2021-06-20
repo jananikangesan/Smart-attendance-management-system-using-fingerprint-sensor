@@ -113,7 +113,7 @@
 
 <script>
     function Updatefour() {
-        if (confirm("Are you sure you want to update this level 4?")) {
+        if (confirm("Are you sure you want to update this level 4? level 4 students will changing the level 4 stage to passout stage.")) {
             window.location.href = "{{ url('/level-4/update') }}";
         } else {
             window.location.href = "{{ url('/level/update') }}";
