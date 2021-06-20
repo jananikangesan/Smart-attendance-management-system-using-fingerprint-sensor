@@ -1,8 +1,22 @@
 @extends('lecturer_dashboard.lecturer')
 @section('lecturercontent')
+
+@if ($errors->any())
+    <ul class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
+@if(session()->get('info'))
+<div class="alert alert-success">
+    {{ session()->get('info') }}
+</div>
+@endif
 <div class="udb">
 
-<div class="udb-sec udb-prof">
+    <div class="udb-sec udb-prof">
     <h4><img src="{{ asset('image/prof2.png')}}" alt="" /> My Profile</h4>
     <div class="sdb-tabl-com sdb-pro-table">
         @if(isset($lecturer))
@@ -20,12 +34,12 @@
                     <td>:</td>
                     <td>{{ $lect -> lect_email }}</td>
                 </tr>
-                {{--<tr>
+                <tr>
                     <td>Position</td>
                     <td>:</td>
                     <td>{{ $lect -> position }}</td>
                 </tr>
-                <tr>
+                {{--<tr>
                     <td>Date of birth</td>
                     <td>:</td>
                     <td>03 Jun 1990</td>

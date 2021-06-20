@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Exception;
 
 class ChangePasswordcontroller extends Controller
 {
@@ -37,10 +38,14 @@ class ChangePasswordcontroller extends Controller
             'new_password' => ['required'],
             'new_confirm_password' => ['same:new_password'],
         ]);
+        try {
+            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
    
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-   
-        //dd('Password change successfully.');
-        return redirect()->route('home')->with('info','Password change successfully.');
+            return redirect()->route('profile')->with('info','Password change successfully.');
+        } catch (Exception $exception) {
+
+            return route('profile')->withInput()
+               ->withErrors(['unexpected_error' => 'Current Password is worng or Password dose not match.']);
+        }
     }
 }

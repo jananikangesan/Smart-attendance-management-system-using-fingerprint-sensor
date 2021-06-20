@@ -87,8 +87,9 @@
 
                                     <div class="col-md-6">
                                         <select id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ $user ->role }}" required autocomplete="role">
+                                            <option value=0 {{$user ->role == 0 ? 'selected' : ''}}>Lecturer</option>
                                             <option value=1 {{$user ->role == 1 ? 'selected' : ''}}>Admin</option>
-                                            <option value=0 {{$user ->role == 0 ? 'selected' : ''}}>User</option>
+                                            <option value=2 {{$user ->role == 2 ? 'selected' : ''}}>HOD</option>
                                         </select>
                                         @error('role')
                                             <span class="invalid-feedback" role="alert">
