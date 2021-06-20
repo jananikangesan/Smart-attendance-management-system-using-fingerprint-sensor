@@ -53,3 +53,28 @@
         </div>
     </div>
 </div>
+
+@section('scripts')
+@parent
+
+@if($errors->has('current_password') || $errors->has('new_password'))
+    <script>
+    $(function() {
+        $('#modal40').modal({
+            show: true
+        });
+    });
+    </script>
+@endif
+
+@if($message = Session::get('error'))
+    <script>
+        $(function() {
+            $('#modal40').modal({
+                show: true
+            });
+        });
+    </script>
+@endif
+
+@endsection
