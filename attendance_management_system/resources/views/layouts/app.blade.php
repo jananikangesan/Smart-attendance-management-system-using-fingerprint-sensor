@@ -163,7 +163,6 @@
     </div>
 
 <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
-    <section>
         <!-- LOGIN SECTION -->
         @include('partials.login')
         <!-- REGISTER SECTION -->
@@ -172,9 +171,9 @@
         @include('partials.forget_password')
         <!-- PASSWORD CHANGE SECTION -->
         @include('partials.password_change')
-    </section>
 
     <!--Import jQuery before materialize.js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.min.js') }}"></script>
